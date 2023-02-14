@@ -1,0 +1,15 @@
+project/target
+.bsp
+.idea
+target
+.DS_Store
+node_modules
+dist
+
+docker_pg_vol/
+output/
+ign-*
+.bloop
+.metals
+.vscode
+metals.sbt
