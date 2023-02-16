@@ -38,11 +38,11 @@ val sharedSettings = Seq(
 
 lazy val root = (project in file("."))
   .aggregate(backend, frontend, shared.js, shared.jvm)
-  .settings(name := "pet-clinic")
+  .settings(name := "blogapp")
 
 lazy val backend = (project in file("backend"))
   .settings(
-    name := "pet-clinic-backend",
+    name := "blogapp-backend",
     libraryDependencies ++= Seq(
       "dev.zio"               %% "zio"                               % zioVersion,
       "dev.zio"               %% "zio-logging-slf4j"                 % zioLoggingVersion,
@@ -66,7 +66,7 @@ lazy val backend = (project in file("backend"))
   .settings(sharedSettings)
   .enablePlugins(FlywayPlugin)
   .settings(
-    flywayUrl      := "jdbc:postgresql://localhost:5432/postgres",
+    flywayUrl      := "jdbc:postgresql://localhost:5432/blogapp",
     flywayUser     := "postgres",
     flywayPassword := "password"
   )
@@ -75,7 +75,7 @@ lazy val backend = (project in file("backend"))
 lazy val frontend = (project in file("frontend"))
   .enablePlugins(ScalaJSPlugin)
   .settings(
-    name := "pet-clinic-frontend",
+    name := "blogapp-frontend",
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) },
     scalaJSUseMainModuleInitializer := true,
     scalaJSLinkerConfig ~= { _.withSourceMap(false) },

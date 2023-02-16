@@ -50,17 +50,18 @@ frontend-up:
 	@cd js-frontend && yarn exec vite
 
 postgres-check:
-	@docker exec -i docker_pg_container psql postgres postgres -c "\d"
-	@docker exec -i docker_pg_container psql postgres postgres -c "select * from person"
-	@docker exec -i docker_pg_container psql postgres postgres -c "select * from scrawl"
+	@docker exec -i docker_pg_container psql  -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "\l"
+	@docker exec -i docker_pg_container psql  -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "\d"
+	@docker exec -i docker_pg_container psql  -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "select * from person"
+	@docker exec -i docker_pg_container psql  -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "select * from scrawl"
 
 postgres-down:
 	@docker stop $(DOCKER_PG_CONTAINER) 
 	@docker rm $(DOCKER_PG_CONTAINER)
 
 postgres-init-migrate:
-	@cat ./backend/src/main/resources/db/migration/V1__create_blogapp.sql | docker exec -i docker_pg_container psql -U postgres -d postgres  
-	@cat ./backend/src/main/resources/db/migration/V2__add_fixtures.sql | docker exec -i docker_pg_container psql -U postgres -d postgres  
+	@cat ./backend/src/main/resources/db/migration/V1__create_blogapp.sql | docker exec -i docker_pg_container psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)  
+	@cat ./backend/src/main/resources/db/migration/V2__add_fixtures.sql | docker exec -i docker_pg_container psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)  
 
 postgres-reset:
 	@$(MAKE) postgres-down
