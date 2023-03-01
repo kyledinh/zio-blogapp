@@ -109,6 +109,8 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
         └── test
 ```
 
+## Response HTML Tempate 
+- Medio - from [Untree.co](https://untree.co/free-templates/medio-web-design-agency-template-free-download/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

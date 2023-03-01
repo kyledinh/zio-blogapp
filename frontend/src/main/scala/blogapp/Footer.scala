@@ -13,8 +13,9 @@ final case class Footer() extends Component {
           "flex justify-between"
         ),
         div(
+          footerLink("CSS template designed love by Untree.co ", "https://untree.co"),
           cls("text-gray-600 text-sm italic"),
-          "⚠️ Data Will Reset Every 15 Minutes"
+          "⚠️ Used for demo purposes. Scroll down to see the Medio template."
         ),
         div(
           cls("flex"),
