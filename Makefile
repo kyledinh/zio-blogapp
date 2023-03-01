@@ -43,7 +43,7 @@ codegen-clear:
 
 frontend-compile:
 	@sbt frontend/fastLinkJS
-	@cp frontend/target/scala-3.1.3/pet-clinic-frontend-fastopt/main.js js-frontend/.
+	@cp frontend/target/scala-3.1.3/blogapp-frontend-fastopt/main.js js-frontend/.
 
 frontend-up:
 	@open http://localhost:3000
