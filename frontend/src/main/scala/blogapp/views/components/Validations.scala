@@ -2,7 +2,7 @@ package blogapp.views.components
 
 import animus._
 import blogapp.Component
-import com.raquo.laminar.api.L._
+import com.raquo.laminar.api.L.{*, given}
 
 final case class Validations($validations: Signal[List[String]], $triedToSubmit: Signal[Boolean]) extends Component {
   def body: Div =

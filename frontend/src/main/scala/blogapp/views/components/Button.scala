@@ -1,6 +1,6 @@
 package blogapp.views.components
 
-import com.raquo.laminar.api.L._
+import com.raquo.laminar.api.L.{*, given}
 import blogapp.Component
 import ButtonConfig.{ButtonStyle, ButtonSize}
 

@@ -1,6 +1,7 @@
 package blogapp 
 
-import com.raquo.laminar.api.L.{Owner => _, _}
+// import com.raquo.laminar.api.L.{Owner => _, _}
+import com.raquo.laminar.api.L.{*, given}
 import blogapp.views._
 
 object MainPage {

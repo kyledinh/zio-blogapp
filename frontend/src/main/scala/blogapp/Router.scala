@@ -1,6 +1,7 @@
 package blogapp 
 
 import com.raquo.laminar.api.L
+
 import com.raquo.waypoint._
 import blogapp.models.Uuid
 import zio.json._

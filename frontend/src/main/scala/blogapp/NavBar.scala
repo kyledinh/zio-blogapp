@@ -1,7 +1,7 @@
 package blogapp 
 
-import com.raquo.laminar.api.L._
-import blogapp.Page._
+import com.raquo.laminar.api.L.{*, given}
+import blogapp.Page.*
 
 final case class NavBar() extends Component {
 

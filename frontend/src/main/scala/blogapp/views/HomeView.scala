@@ -1,6 +1,7 @@
 package blogapp.views
 
-import com.raquo.laminar.api.L._
+import com.raquo.laminar.api.L.{*, given}
+
 import blogapp.Component
 
 final case class HomeView() extends Component {
