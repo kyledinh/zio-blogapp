@@ -18,8 +18,8 @@ object MainPage {
           child <-- Router.router.$currentPage.map {
             // case Page.OwnersPage         => OwnerIndexView()
             // case Page.OwnerPage(ownerId) => OwnerViewWrapper(ownerId)
-            case Page.HomePage           => HomeView()
-            // case Page.VeterinariansPage  => VetIndexView()
+            case Page.HomePage            => HomeView()
+            case Page.BoardPage           => BoardView()
           }
         )
       ),

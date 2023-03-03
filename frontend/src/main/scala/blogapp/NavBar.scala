@@ -49,7 +49,7 @@ final case class NavBar() extends Component {
                 navLink("Authors", HomePage)  
               ),
               li(
-                navLink("Scrawl Board", HomePage)  
+                navLink("Scrawl Board", BoardPage)  
               ),
             ),
             a(
