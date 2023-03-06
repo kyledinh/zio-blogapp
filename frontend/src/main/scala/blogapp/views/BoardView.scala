@@ -45,7 +45,6 @@ final case class BoardView() extends Component {
   reloadScrawlBus.emit(())
 
   // Elements
-
   val body: Div = div(
     reloadScrawlBus.events --> { _ => () },
     onMountCallback(_ => reloadScrawlBus.emit(())),      
@@ -66,19 +65,11 @@ final case class BoardView() extends Component {
         )
       ),
       div(cls("mb-4"),
-        "This version of the website uses Scala 3!"
-      ),
-      div(cls("mb-2 text-xl text-gray-400 font-bold"), "Resources"),
-      div(
-        bodyLink(
-          "GitHub repo for this project",
-          "https://github.com/kyledinh/zio-blogapp"
-        )
+        "Scrawl Board showing all recent Scrawls!"
       ),
       div(cls("mb-4"),
-        bodyLink(
-          "ZIO documentation",
-          "https://zio.dev/"
+        img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),
+          height("30px")
         )
       )
     )
