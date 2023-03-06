@@ -1,0 +1,72 @@
+.site-footer {
+	font-size: 14px;	
+	color: #888;
+	padding: 70px 0;
+
+
+	a {
+		color: #777;
+		position: relative;
+		display: inline-block;
+		&:hover {
+			color: $black;
+		}
+	}
+
+	.footer-cta {
+		h2 {
+			font-size: 30px;
+			color: $primary;
+		}
+	}
+	.btn {
+		&:before {
+			display: none;
+		}
+	}
+	.widget {
+		margin-bottom: 40px;
+		display: block;
+		h3 {
+			font-size: 12px;
+			font-weight: 700;
+			text-transform: uppercase;
+			margin-bottom: 15px;
+			color: $secondary;
+		}
+
+		.links {
+			width: 150px;
+			li {
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	.social {
+		li {
+			display: inline-block;
+			a {
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				position: relative;
+				background: $gray-100;
+				border-radius: 50%;
+				&:before {
+					display: none;
+				}
+				> span {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+				&:hover {
+					background: $black;
+					color: $white;
+				}
+			}
+		}
+	}
+}

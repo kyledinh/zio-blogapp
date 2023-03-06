@@ -8,6 +8,7 @@ dist
 
 docker_pg_vol/
 output/
+ignored/
 ign-*
 .bloop
 .metals

@@ -65,6 +65,12 @@ make frontend-up
 
 <br><hr><br>
 
+## Screenshot 
+
+[![Board Page Screenshot][board-page-screenshot]](./docs/blogapp-board-screenshot.png)
+
+<br><hr><br>
+
 ## Project Outline 
 
 A good starting point to understand this repo is with the `Makefile`. It will have the most common commands to check, setup, compile and build the project.
@@ -109,7 +115,10 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
         └── test
 ```
 
+## Response HTML Tempate 
+- Medio - from [Untree.co](https://untree.co/free-templates/medio-web-design-agency-template-free-download/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: js-frontend/zio-pet-clinic-webpage.png
+[board-page-screenshot]: docs/assets/blogapp-board-screenshot.png

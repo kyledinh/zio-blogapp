@@ -1,3 +1,7 @@
+0.0.4
+- Frontend adopts a Responsive Theme - Medio
+- Laminar for Board Page that getsAllScrawls from api/db
+
 0.0.3
 - Branched from https://github.com/kyledinh/zio-petclinic-scala-3
 

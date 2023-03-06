@@ -1,0 +1,24 @@
+/*
+* Template Name: Medio
+* Template Author: Untree.co
+* Template License: https://creativecommons.org/licenses/by/3.0/
+* Author URI: https://untree.co/
+
+* Twitter: https://twitter.com/Untree_co
+* Facebook: https://web.facebook.com/Untree.co/
+*/
+
+$primary: #ff4c4c;
+$secondary: #52565e;
+$font-family-sans-serif: 'Playfair Display', sans-serif;
+$font-family-sans-serif-secondary: 'Roboto', sans-serif;
+
+@import 'bootstrap/mixins';
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+
+@import 'bootstrap/bootstrap';
+
+@import 'components/site-navbar';
+@import 'components/site-blocks';
+@import 'components/site-footer';
