@@ -3,24 +3,24 @@ package blogapp.views
 import animus.*
 import com.raquo.laminar.api.L.{*, given}
 import com.raquo.domtypes.generic.codecs.StringAsIsCodec // Moved in future version above 0.14.2
+import com.raquo.laminar.keys.ReactiveHtmlAttr
 
 import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.{Components}
 import blogapp.{Requests}
 import java.time.LocalDate 
-import com.raquo.laminar.keys.ReactiveHtmlAttr
 
 final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component {
 
   val isEditingVar = Var(false)
-  val dataAos: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos", StringAsIsCodec)
-  val dataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
+  val attrDataAos: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos", StringAsIsCodec)
+  val attrDataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
 
   val body: Div = 
     div(cls("col-lg-4 mb-4 mb-lg-0"),
-      dataAos("fade-up"),
-      dataAosDelay("0"), // data-aos="fade-up" data-aos-delay="0",
+      attrDataAos("fade-up"),
+      attrDataAosDelay("0"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
       div(cls("service grayscale"),
         div(cls("service-img"),
           img(src("medio/images/img_1.jpg"))
@@ -52,12 +52,12 @@ final case class BoardView() extends Component {
   val body: Div = div(
     reloadScrawlBus.events --> { _ => () },
     onMountCallback(_ => reloadScrawlBus.emit(())),      
-    div(cls("text-l text-justify m-5"),
-      div(cls("mb-2 text-xl text-orange-700 font-bold"),
-        "Scrawl Board"
-      ),
-      div(cls("mb-2 text-xl text-gray-400 font-bold"),
-        Components.formatDate(LocalDate.now())
+    div(cls("section bg-light"),
+      div(cls("container"),
+        "Scrawl Board",
+        div(cls(""),
+          Components.formatDate(LocalDate.now())
+        ),
       ),
       div(cls("section bg-light"),
         div(cls("container"),
@@ -68,12 +68,14 @@ final case class BoardView() extends Component {
           )
         )
       ),
-      div(cls("mb-4"),
-        "Scrawl Board showing all recent Scrawls!"
-      ),
-      div(cls("mb-4"),
-        img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),
-          height("30px")
+      div(cls("section bg-light"),
+        div(cls("container"),
+        "Scrawl Board showing all recent Scrawls!",
+        div(cls(""),
+          img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),
+            height("30px")
+          )
+        )
         )
       )
     )

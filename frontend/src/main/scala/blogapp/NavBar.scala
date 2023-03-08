@@ -1,11 +1,22 @@
 package blogapp 
 
 import com.raquo.laminar.api.L.{*, given}
+import com.raquo.domtypes.generic.codecs.StringAsIsCodec // Moved in future version above 0.14.2
+import com.raquo.laminar.keys.ReactiveHtmlAttr
 import blogapp.Page.*
 
 final case class NavBar() extends Component {
 
+  val attrDataToggle: ReactiveHtmlAttr[String] = customHtmlAttr("data-toggle", StringAsIsCodec)
+  val attrDataTarget: ReactiveHtmlAttr[String] = customHtmlAttr("data-target", StringAsIsCodec)
+
   def body: Div =
+    div(
+      // oldPetClinicNav(), // FROM PetClinic
+      newMedioNav()
+    )
+
+  private def oldPetClinicNav(): Div = {
     div(
       div(
         cls("site-mobile-menu site-navbar-target"),
@@ -63,6 +74,7 @@ final case class NavBar() extends Component {
         )
       )
     )
+  }
 
   private def navLink(text: String, page: Page): Div = {
     val $isActive =
@@ -80,6 +92,35 @@ final case class NavBar() extends Component {
         case true  => "text-orange-700 font-bold hover:text-orange-600"
         case false => "text-gray-500 font-normal hover:text-orange-600"
       }
+    )
+  }
+
+  private def newMedioNav(): Div = {
+    div(
+      div(cls("site-mobile-menu site-navbar-target"),
+        div(cls("site-mobile-menu-header"),
+          div(cls("site-mobile-menu-close"),
+            span(cls("icofont-close js-menu-close"))
+          )
+        ),
+        div(cls("site-mobile-menu-body"))
+      ),
+      nav(cls("site-nav"),
+        div(cls("container"),
+          navLink("BlogApp", HomePage),
+          ul(cls("js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"),
+            li(navLink("Home", HomePage)),
+            li(navLink("Board", BoardPage)),
+            li(navLink("People", HomePage)),
+          ),
+          a(cls("burger ms-auto float-end site-menu-toggle mt-2 js-menu-toggle d-inline-block d-lg-none light"),
+            href("#"),
+            attrDataToggle("collapse"),
+            attrDataTarget("#main-navbar"), 
+            span(),
+          )
+        )
+      )
     )
   }
 }
