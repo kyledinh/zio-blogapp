@@ -2,18 +2,25 @@ package blogapp.views
 
 import animus.*
 import com.raquo.laminar.api.L.{*, given}
+import com.raquo.domtypes.generic.codecs.StringAsIsCodec // Moved in future version above 0.14.2
+
 import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.{Components}
 import blogapp.{Requests}
 import java.time.LocalDate 
+import com.raquo.laminar.keys.ReactiveHtmlAttr
 
 final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component {
+
   val isEditingVar = Var(false)
+  val dataAos: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos", StringAsIsCodec)
+  val dataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
 
   val body: Div = 
     div(cls("col-lg-4 mb-4 mb-lg-0"),
-        // data-aos="fade-up" data-aos-delay="0",
+      dataAos("fade-up"),
+      dataAosDelay("0"), // data-aos="fade-up" data-aos-delay="0",
       div(cls("service grayscale"),
         div(cls("service-img"),
           img(src("medio/images/img_1.jpg"))
@@ -23,9 +30,6 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
           p(s"${scrawl.body}")
         )
       )
-    // ).amend(
-    //   data-aos("fade-up"),
-    //   data-aos-delay("0")
     ) 
 
 }

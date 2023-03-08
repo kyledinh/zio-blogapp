@@ -13,7 +13,7 @@ final case class ScrawlRoutes(service: ScrawlService) {
 
     // Gets all of the Scrawls in the database and returns them as JSON.
     case Method.GET -> !! / "scrawls" =>
-      service.getAll.map(pets => Response.json(pets.toJson))
+      service.getAll.map(scrawls => Response.json(scrawls.toJson))
 
     // Gets a single Scrawl found by their parsed ID and returns it as JSON.
     case Method.GET -> !! / "scrawl" / id =>
