@@ -15,6 +15,8 @@ object MainPage {
             // case Page.OwnerPage(ownerId) => OwnerViewWrapper(ownerId)
             case Page.HomePage            => HomeView()
             case Page.BoardPage           => BoardView()
+            case Page.MedioPage           => MedioView()
+            case Page.PeoplePage          => PeopleView()
           }
         )
       ),

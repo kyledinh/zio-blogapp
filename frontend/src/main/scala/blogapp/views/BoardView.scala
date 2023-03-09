@@ -54,10 +54,8 @@ final case class BoardView() extends Component {
     onMountCallback(_ => reloadScrawlBus.emit(())),      
     div(cls("section bg-light"),
       div(cls("container"),
-        "Scrawl Board",
-        div(cls(""),
-          Components.formatDate(LocalDate.now())
-        ),
+        h2("Scrawl Board"),
+        div(Components.formatDate(LocalDate.now())),
       ),
       div(cls("section bg-light"),
         div(cls("container"),
@@ -70,12 +68,8 @@ final case class BoardView() extends Component {
       ),
       div(cls("section bg-light"),
         div(cls("container"),
-        "Scrawl Board showing all recent Scrawls!",
-        div(cls(""),
-          img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),
-            height("30px")
-          )
-        )
+          "Scrawl Board showing all recent Scrawls!",
+          div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),height("30px")))
         )
       )
     )

@@ -52,16 +52,10 @@ final case class NavBar() extends Component {
             ),
             ul(
               cls("js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"),
-              li(
-                cls("active"),
-                navLink("Home", HomePage)  
-              ),
-              li(
-                navLink("Authors", HomePage)  
-              ),
-              li(
-                navLink("Scrawl Board", BoardPage)  
-              ),
+              li(cls("active"),navLink("Home", HomePage)),
+              li(navLink("Authors", HomePage)),
+              li(navLink("Scrawl Board", BoardPage)),
+              li(navLink("Medio", MedioPage)),
             ),
             a(
               href("#"),
@@ -111,7 +105,8 @@ final case class NavBar() extends Component {
           ul(cls("js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"),
             li(navLink("Home", HomePage)),
             li(navLink("Board", BoardPage)),
-            li(navLink("People", HomePage)),
+            li(navLink("People", PeoplePage)),
+            li(navLink("Medio", MedioPage)),
           ),
           a(cls("burger ms-auto float-end site-menu-toggle mt-2 js-menu-toggle d-inline-block d-lg-none light"),
             href("#"),
