@@ -11,7 +11,7 @@
 - [x] Update from Scala 2 to Scala 3.1.3
 - [x] Docker for Postgres Database
 - [x] Backend API for Blog App
-- [ ] Frontend with Scala.js
+- [.] Frontend with Scala.js
 - [ ] Update Tests
 - [ ] Tools 
 - [ ] Deploy with Kubernetes 
@@ -49,19 +49,15 @@ Start the database
 - `make postgres-init-migrate` (do this only on first time to seed the database)
 - `make postgres-down` (to stop and remove the database container)
 
-To run the backend API server (inside sbt shell)
-```
-sbt 
-~ backend/reStart
-
-Crtl+c (to exit)
-```
+To run the backend API server (With sbt server)
+- `make backend-up`
 
 Run the frontend in a separate **Terminal 2**
-```
-open http://localhost:3000
-make frontend-up
-```
+- `make frontend-up`
+- `open http://localhost:3000`
+
+Check processes that are running
+- `make status`
 
 <br><hr><br>
 

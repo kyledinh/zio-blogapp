@@ -17,14 +17,14 @@ POSTGRES_PASSWORD := password
 .PHONY: check codegen codegn-clear postgres setup
 
 backend-compile:
-	@sbt backend/clean
-	@sbt backend/compile 
+	@sbtn backend/clean
+	@sbtn backend/compile 
+
+backend-down:
+	@sbtn backend/reStop
 
 backend-up:
-## @sbt backend/reStart
-	echo "Running in background, currenly does NOT work...."
-	echo "Try this:"
-	echo "Run `sbt` in terminal, then `backend/reStart`"
+	@sbtn backend/reStart
 
 check: 
 	@echo "SEMVER: $(SEMVER)"
@@ -42,7 +42,7 @@ codegen-clear:
 	rm -rf output/*.*
 
 frontend-compile:
-	@sbt frontend/fastLinkJS
+	@sbtn frontend/fastLinkJS
 	@cp frontend/target/scala-3.1.3/blogapp-frontend-fastopt/main.js js-frontend/.
 
 frontend-up:
@@ -89,8 +89,13 @@ setup:
 	@cd js-frontend && yarn install
 
 status:
-	sbt backend/reStatus
+	@echo "Docker/Database Status:"
 	docker ps 
+	@echo
+	@echo "Backend Status:"
+	sbtn backend/reStatus
+	@echo
+	@echo "Frontend/JS Vite Status:"
 	ps -aef | grep vite
 
 test-backend:
