@@ -8,18 +8,13 @@ object MainPage {
   def body: Div =
     div(
       NavBar(),
-      div(
-        div(
-          child <-- Router.router.$currentPage.map {
-            // case Page.OwnersPage         => OwnerIndexView()
-            // case Page.OwnerPage(ownerId) => OwnerViewWrapper(ownerId)
-            case Page.HomePage            => HomeView()
-            case Page.BoardPage           => BoardView()
-            case Page.MedioPage           => MedioView()
-            case Page.PeoplePage          => PeopleView()
-          }
-        )
-      ),
-      Footer()
+      child <-- Router.router.$currentPage.map {
+        // case Page.OwnersPage         => OwnerIndexView()
+        // case Page.OwnerPage(ownerId) => OwnerViewWrapper(ownerId)
+        case Page.HomePage            => HomeView()
+        case Page.BoardPage           => BoardView()
+        case Page.MedioPage           => MedioView()
+        case Page.PeoplePage          => PeopleView()
+      }
     )
 }

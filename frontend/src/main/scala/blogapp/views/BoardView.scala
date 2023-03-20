@@ -18,20 +18,20 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
   val attrDataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
 
   val body: Div = 
+
     div(cls("col-lg-4 mb-4 mb-lg-0"),
       attrDataAos("fade-up"),
-      attrDataAosDelay("0"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
+      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
       div(cls("service grayscale"),
         div(cls("service-img"),
           img(src("medio/images/img_1.jpg"))
         ),
-        div(cls("servicce-inner"),
+        div(cls("service-inner"),
           h3(s"${scrawl.title}"),
           p(s"${scrawl.body}")
         )
       )
     ) 
-
 }
 
 final case class BoardView() extends Component {
@@ -57,14 +57,12 @@ final case class BoardView() extends Component {
         h2("Scrawl Board"),
         div(Components.formatDate(LocalDate.now())),
       ),
-      div(cls("section bg-light"),
         div(cls("container"),
           div(cls("row"),
             children <-- $scrawls.map { scrawls =>
               scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
             }
           )
-        )
       ),
       div(cls("section bg-light"),
         div(cls("container"),

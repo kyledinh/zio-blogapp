@@ -50,6 +50,7 @@ Start the database
 - `make postgres-down` (to stop and remove the database container)
 
 To run the backend API server (With sbt server)
+- `make backend-compile`
 - `make backend-up`
 
 Run the frontend in a separate **Terminal 2**
