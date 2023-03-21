@@ -10,7 +10,7 @@ final case class NewsletterSection() extends Component {
   val body: Div =
     div(cls("section section-contact m-md-5 px-md-5"),
       div(cls("container"),
-        h2("Subscribe to Newsleter"),
+        h2("Subscribe to Newsletter"),
         p("Lorem ipsom dolor sit amet, consectetur adipiscing elit"),
         form(cls("form-contact"),
           action(""),
