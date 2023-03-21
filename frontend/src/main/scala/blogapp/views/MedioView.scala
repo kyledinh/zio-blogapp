@@ -16,6 +16,8 @@ final case class MedioView() extends Component {
 				p("This version of the website uses Scala 3!"),
         	)
 		),
+		ServicesSection(),
+		PortfolioSection(),
 		GetStartedSection(),
 		OurServicesSection(),
 		// TestimonialSection(),
