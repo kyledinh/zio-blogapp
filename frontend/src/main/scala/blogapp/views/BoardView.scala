@@ -2,22 +2,18 @@ package blogapp.views
 
 import animus.*
 import com.raquo.laminar.api.L.{*, given}
-import com.raquo.domtypes.generic.codecs.StringAsIsCodec // Moved in future version above 0.14.2
-import com.raquo.laminar.keys.ReactiveHtmlAttr
 
 import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.{Components}
+import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
 import blogapp.{Requests}
 import java.time.LocalDate 
 
 final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component {
 
   val isEditingVar = Var(false)
-  val attrDataAos: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos", StringAsIsCodec)
-  val attrDataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
   val rand = new scala.util.Random
-
 
   val body: Div = 
 

@@ -1,14 +1,10 @@
 package blogapp 
 
 import com.raquo.laminar.api.L.{*, given}
-import com.raquo.domtypes.generic.codecs.StringAsIsCodec // Moved in future version above 0.14.2
-import com.raquo.laminar.keys.ReactiveHtmlAttr
+import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay, attrDataToggle, attrDataTarget}
 import blogapp.Page.*
 
 final case class NavBar() extends Component {
-
-  val attrDataToggle: ReactiveHtmlAttr[String] = customHtmlAttr("data-toggle", StringAsIsCodec)
-  val attrDataTarget: ReactiveHtmlAttr[String] = customHtmlAttr("data-target", StringAsIsCodec)
 
   def body: Div =
     div(
@@ -67,5 +63,4 @@ final case class NavBar() extends Component {
       div(cls("section bg-dark"))
     )
   }
-
 }
