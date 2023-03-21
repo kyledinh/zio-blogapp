@@ -37,7 +37,6 @@ final case class OtherInterests() extends Component {
   val attrDataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
 
   val body: Div =
-    div(
       div(cls("section mb-5"),
         div(cls("container"),
           div(cls("row mb-5"),
@@ -48,7 +47,7 @@ final case class OtherInterests() extends Component {
             )
           ),
           div(cls("row"),
-            div(cls("col-md-6 col-lg-4 mb-4"), attrDataAos("fade-up"), attrDataAosDelay("100"), 
+            div(cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"), attrDataAos("fade-up"), attrDataAosDelay("100"), 
               a(href("#"), 
                 img(src("medio/images/img_v_3-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
                 h3(cls("h4 mb-3"),
@@ -59,10 +58,8 @@ final case class OtherInterests() extends Component {
                   a(href("#"), cls("more"), "Find out more")
                 )
               )
-            )
-          ),
-          div(cls("row"),
-            div(cls("col-md-6 col-lg-4 mb-4"), attrDataAos("fade-up"), attrDataAosDelay("100"), 
+            ),
+            div(cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"), attrDataAos("fade-up"), attrDataAosDelay("200"), 
               a(href("#"), 
                 img(src("medio/images/img_v_4-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
                 h3(cls("h4 mb-3"),
@@ -73,10 +70,8 @@ final case class OtherInterests() extends Component {
                   a(href("#"), cls("more"), "Find out more")
                 )
               )
-            )
-          ),
-          div(cls("row"),
-            div(cls("col-md-6 col-lg-4 mb-4"), attrDataAos("fade-up"), attrDataAosDelay("100"), 
+            ),
+            div(cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"), attrDataAos("fade-up"), attrDataAosDelay("300"), 
               a(href("#"), 
                 img(src("medio/images/img_v_6-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
                 h3(cls("h4 mb-3"),
@@ -91,7 +86,6 @@ final case class OtherInterests() extends Component {
           ),
         )
       )
-    )
 
 /*
 			<div class="row mb-5">

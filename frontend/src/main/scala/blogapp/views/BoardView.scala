@@ -16,6 +16,8 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
   val isEditingVar = Var(false)
   val attrDataAos: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos", StringAsIsCodec)
   val attrDataAosDelay: ReactiveHtmlAttr[String] = customHtmlAttr("data-aos-delay", StringAsIsCodec)
+  val rand = new scala.util.Random
+
 
   val body: Div = 
 
@@ -24,7 +26,7 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
       attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
       div(cls("service grayscale"),
         div(cls("service-img"),
-          img(src("medio/images/img_1.jpg"))
+          img(src("medio/images/img_" + rand.between(1,4) + ".jpg"))
         ),
         div(cls("service-inner"),
           h3(s"${scrawl.title}"),
@@ -56,6 +58,7 @@ final case class BoardView() extends Component {
       div(cls("container"),
         h2("Scrawl Board"),
         div(Components.formatDate(LocalDate.now())),
+        br(),
       ),
         div(cls("container"),
           div(cls("row"),
