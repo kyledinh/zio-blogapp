@@ -55,6 +55,9 @@ object Requests {
     }
   }
 
+  def getAllPersons(): EventStream[List[Person]] =
+    getRequest[List[Person]]("persons")
+
   def getAllScrawls(): EventStream[List[Scrawl]] =
     getRequest[List[Scrawl]]("scrawls")
 

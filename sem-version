@@ -1,3 +1,7 @@
+0.0.5
+- /medio template page  
+- more pages/view for persons, scrawls
+
 0.0.4
 - Frontend adopts a Responsive Theme - Medio
 - Laminar for Board Page that getsAllScrawls from api/db
