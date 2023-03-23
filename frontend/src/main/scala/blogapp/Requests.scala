@@ -61,8 +61,11 @@ object Requests {
   def getAllScrawls(): EventStream[List[Scrawl]] =
     getRequest[List[Scrawl]]("scrawls")
 
-  def getScrawls(personId: Uuid): EventStream[List[Scrawl]] =
-    getRequest[List[Scrawl]]("persons", personId.id, "scrawls")
+  def getPerson(id: Uuid): EventStream[Person] =
+    getRequest[Person]("person", id.id)
+
+  def getScrawlsByPerson(id: Uuid): EventStream[List[Scrawl]] =
+    getRequest[List[Scrawl]]("scrawls", "person", id.id)
 
   // def addScrawl(createScrawl: CreateScrawl): EventStream[Scrawl] =
   //   postRequest[CreateScawl, Scrawl](createScrawl)("scrawls")

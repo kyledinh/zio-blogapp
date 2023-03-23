@@ -23,7 +23,7 @@ final case class ScrawlRoutes(service: ScrawlService) {
       } yield Response.json(scrawl.toJson)
 
     // Gets all of the Scrawls in the database associated with a particular user and returns them as JSON.
-    case Method.GET -> !! / "person" / id / "scrawls" =>
+    case Method.GET -> !! / "scrawls" / "person" / id =>
       for {
         id   <- parseUuid(id)
         scrawls <- service.getForPerson(id)
