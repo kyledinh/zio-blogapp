@@ -37,7 +37,6 @@ final case class PersonDetailView(person: Person, reload: () => Unit) extends Co
   val isEditingVar = Var(false)
 
   val body: Div = 
-
     div(cls("container"),
       attrDataAos("fade-up"),
       attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
@@ -51,12 +50,28 @@ final case class PersonDetailView(person: Person, reload: () => Unit) extends Co
     ) 
 }
 
+final case class ScrawlDetailView(scrawl: Scrawl, reload: () => Unit) extends Component {
+
+  val body: Div = 
+    div(cls("container"),
+      attrDataAos("fade-up"),
+      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
+      div(cls("service grayscale"),
+        div(cls("service-inner"),
+          h3(s"${scrawl.title}"),
+          p(s"${scrawl.personId}"),
+          p(s"${scrawl.body}")
+        )
+      )
+    ) 
+}
+
 
 final case class PersonView(id: Uuid) extends Component {
 
   // Bus and Signals/Streams
-  val reloadPersonBus: EventBus[Unit] =
-    new EventBus[Unit] 
+  val reloadPersonBus: EventBus[Unit] = new EventBus[Unit] 
+  val reloadScrawlBus: EventBus[Unit] = new EventBus[Unit] 
 
   val $person: EventStream[Person] =
     EventStream.merge(
@@ -66,77 +81,38 @@ final case class PersonView(id: Uuid) extends Component {
       }
     )
       
-  val reloadScrawlBus: EventBus[Unit] =
-    new EventBus[Unit] 
-
-  val $scrawls: Signal[List[Scrawl]] = reloadScrawlBus.events.flatMap { _ =>
-        // Requests.getScrawlsByPerson(id)
-        Requests.getAllScrawls()
-      }
+  val $scrawls: Signal[List[Scrawl]] = 
+    // Requests.getScrawlsByPerson(id)
+    // Requests.getAllScrawls()
+    reloadScrawlBus.events.flatMap { _ => Requests.getScrawlsByPerson(id) }
       .toSignal(List.empty)
 
+  reloadPersonBus.emit(())
   reloadScrawlBus.emit(())
 
   // Elements
   val body: Div = div(
-    // reloadScrawlBus.events --> { _ => () },
-    onMountCallback(_ => reloadScrawlBus.emit(())),      
+    reloadPersonBus.events --> { _ => () },
+    reloadScrawlBus.events --> { _ => () },
+    onMountCallback(_ => reloadPersonBus.emit(())),
+    onMountCallback(_ => reloadScrawlBus.emit(())),     
     div(cls("section bg-light"),
       div(cls("container"),
-        child <-- $person.map(PersonDetailView(_, () => reloadPersonBus.emit(())) 
-      ),
-        div(cls("container"),
-          div(cls("row"),
-            children <-- $scrawls.map { scrawls =>
-              scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
-            }
-          )
+        h3("Person:"),
+        child <-- $person.map(PersonDetailView(_, () => reloadPersonBus.emit(())))
+      )
+    ),
+    div(cls("section bg-light"),
+      div(cls("container"),
+        h3("Scrawls:"),
+        div(cls("row"),
+          children <-- $scrawls.map { scrawl =>
+            scrawl.map(ScrawlDetailView(_, () => reloadScrawlBus.emit(())))
+          }
         ),
-        div(cls("section bg-light"),
-          div(cls("container"),
-            h3("Scrawls:"),
-            div(cls("row"),
-              children <-- $scrawls.map { scrawls =>
-                scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
-              }
-            ),
-            div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),height("30px")))
-          )
-        )
+        div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),height("30px")))
       )
     )
   )
 
-  private def bodyLink(name: String, url: String) =
-    a(cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"),
-      target("_blank"),
-      name,
-      href(url)
-    )
 }
-
-
-/*
-	<div class="section bg-light">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="0">
-					<div class="service grayscale">
-						<div class="service-img">
-							<a href="#"><img src="medio/images/img_1.jpg" alt="Image" class="img-fluid"></a>
-						</div>
-						<div class="service-inner">
-							<span></span>
-							<h3>Collaborate</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<p class="mb-0"><a href="#" class="more">Learn more</a></p>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-  */
