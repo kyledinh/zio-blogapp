@@ -7,7 +7,9 @@ import blogapp.views._
 object MainPage {
   def body: Div =
     div(
-      NavBar(),
+      SiteMobileMenu(),
+      SiteNav(),
+      div(cls("section bg-dark")),
       child <-- Router.router.$currentPage.map {
         // case Page.OwnersPage         => OwnerIndexView()
         case Page.PersonPage(id)      => PersonView(id)

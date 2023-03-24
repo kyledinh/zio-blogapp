@@ -44,7 +44,8 @@ final case class PersonDetailView(person: Person, reload: () => Unit) extends Co
         div(cls("service-inner"),
           h3(s"${person.fullName}"),
           p(s"${person.address}"),
-          p(s"${person.email}")
+          p(s"${person.email}"),
+          a(cls("btn btn-black"), href(s"#"), "Edit")
         )
       )
     ) 
@@ -60,7 +61,7 @@ final case class ScrawlDetailView(scrawl: Scrawl, reload: () => Unit) extends Co
         div(cls("service-inner"),
           h3(s"${scrawl.title}"),
           p(s"${scrawl.personId}"),
-          p(s"${scrawl.body}")
+          p(s"${scrawl.body}"),
         )
       )
     ) 
