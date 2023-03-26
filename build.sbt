@@ -9,7 +9,7 @@ ThisBuild / organizationName := "example"
 
 val animusVersion               = "0.2.2" // "0.1.15"
 val flywayVersion               = "9.4.0" // "8.5.12"
-val laminarVersion              = "0.14.2" // "0.14.2"
+val laminarVersion              = "0.14.2" // "15.0.0-M6" // "0.14.2"
 val postgresVersion             = "42.3.6"
 val slf4jVersion                = "1.7.36"
 val zioHttpVersion              = "2.0.0-RC11" // "2.0.0-RC9"

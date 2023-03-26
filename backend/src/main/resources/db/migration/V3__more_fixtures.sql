@@ -5,5 +5,5 @@ VALUES ('Bob', 'Mack', '23 Somewhere, New York, NY', '212-215-1928', 'bob@mack.c
 
 -- Add scrawl fixtures
 INSERT INTO scrawl (title, body, create_date, status, person_id)
-VALUES ('Pale Fire', 'Only when makiig water. Then as now I walked at my ouwn risk: whipped by the bough', NOW(), 'Active', (SELECT id FROM person WHERE email = 'bob@mack.com')),
-    ('Tao Te Ching', 'One who excels as a warior does not appear formidable; One who excels in fighting is never roused in anger;', NOW(), 'Active', (SELECT id FROM person WHERE email = 'steve@stevens.com'));
+VALUES ('Pale Fire', 'Only when making water. Then as now I walked at my ouwn risk: whipped by the bough', NOW(), 'Active', (SELECT id FROM person WHERE email = 'bob@mack.com')),
+       ('Tao Te Ching', 'One who excels as a warior does not appear formidable; One who excels in fighting is never roused in anger;', NOW(), 'Active', (SELECT id FROM person WHERE email = 'steve@stevens.com'));

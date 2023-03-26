@@ -2,32 +2,34 @@ package blogapp.views
 
 import animus.*
 import com.raquo.laminar.api.L.{*, given}
+
 import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.{Components}
+import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
 import blogapp.{Requests}
 import java.time.LocalDate 
 
 final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component {
+
   val isEditingVar = Var(false)
+  val rand = new scala.util.Random
 
   val body: Div = 
+
     div(cls("col-lg-4 mb-4 mb-lg-0"),
-        // data-aos="fade-up" data-aos-delay="0",
+      attrDataAos("fade-up"),
+      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
       div(cls("service grayscale"),
         div(cls("service-img"),
-          img(src("medio/images/img_1.jpg"))
+          img(src("medio/images/img_" + rand.between(1,4) + ".jpg"))
         ),
-        div(cls("servicce-inner"),
+        div(cls("service-inner"),
           h3(s"${scrawl.title}"),
           p(s"${scrawl.body}")
         )
       )
-    // ).amend(
-    //   data-aos("fade-up"),
-    //   data-aos-delay("0")
     ) 
-
 }
 
 final case class BoardView() extends Component {
@@ -48,28 +50,23 @@ final case class BoardView() extends Component {
   val body: Div = div(
     reloadScrawlBus.events --> { _ => () },
     onMountCallback(_ => reloadScrawlBus.emit(())),      
-    div(cls("text-l text-justify m-5"),
-      div(cls("mb-2 text-xl text-orange-700 font-bold"),
-        "Scrawl Board"
+    div(cls("section bg-light"),
+      div(cls("container"),
+        h2("Scrawl Board"),
+        div(Components.formatDate(LocalDate.now())),
+        br(),
       ),
-      div(cls("mb-2 text-xl text-gray-400 font-bold"),
-        Components.formatDate(LocalDate.now())
-      ),
-      div(cls("section bg-light"),
         div(cls("container"),
           div(cls("row"),
             children <-- $scrawls.map { scrawls =>
               scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
             }
           )
-        )
       ),
-      div(cls("mb-4"),
-        "Scrawl Board showing all recent Scrawls!"
-      ),
-      div(cls("mb-4"),
-        img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),
-          height("30px")
+      div(cls("section bg-light"),
+        div(cls("container"),
+          "Scrawl Board showing all recent Scrawls!",
+          div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),height("30px")))
         )
       )
     )

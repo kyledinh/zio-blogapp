@@ -14,6 +14,7 @@ final case class Person(
     email: String
 ) {
   def fullName: String = firstName + " " + lastName
+  def idString: String = id.toString().substring(id.toString().indexOf("(") +1, id.toString().indexOf(")")) // TODO: fixx UUID(####) format
 }
 
 object Person {

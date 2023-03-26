@@ -11,7 +11,7 @@
 - [x] Update from Scala 2 to Scala 3.1.3
 - [x] Docker for Postgres Database
 - [x] Backend API for Blog App
-- [ ] Frontend with Scala.js
+- [x] Frontend with Scala.js/Laminar
 - [ ] Update Tests
 - [ ] Tools 
 - [ ] Deploy with Kubernetes 
@@ -49,25 +49,24 @@ Start the database
 - `make postgres-init-migrate` (do this only on first time to seed the database)
 - `make postgres-down` (to stop and remove the database container)
 
-To run the backend API server (inside sbt shell)
-```
-sbt 
-~ backend/reStart
-
-Crtl+c (to exit)
-```
+To run the backend API server (With sbt server)
+- `make backend-compile`
+- `make backend-up`
 
 Run the frontend in a separate **Terminal 2**
-```
-open http://localhost:3000
-make frontend-up
-```
+- `make frontend-up`
+- `open http://localhost:3000`
+
+Check processes that are running
+- `make status`
 
 <br><hr><br>
 
-## Screenshot 
+## Screenshots 
 
-[![Board Page Screenshot][board-page-screenshot]](./docs/blogapp-board-screenshot.png)
+[![Board Page Screenshot][board-page-screenshot]](./docs/assets/blogapp-board-screenshot.png)
+[![People Page Screenshot][people-page-screenshot]](./docs/assets/blogapp-people-screenshot.png)
+[![Medio Page Screenshot][medio-page-screenshot]](./docs/assets/blogapp-medio-screenshot.png)
 
 <br><hr><br>
 
@@ -122,3 +121,5 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: js-frontend/zio-pet-clinic-webpage.png
 [board-page-screenshot]: docs/assets/blogapp-board-screenshot.png
+[people-page-screenshot]: docs/assets/blogapp-people-screenshot.png
+[medio-page-screenshot]: docs/assets/blogapp-medio-screenshot.png
