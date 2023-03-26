@@ -11,9 +11,9 @@
 - [x] Update from Scala 2 to Scala 3.1.3
 - [x] Docker for Postgres Database
 - [x] Backend API for Blog App
-- [x] Frontend with Scala.js/Laminar
+- [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
 - [ ] Update Tests
-- [ ] Tools 
+- [ ] Developer Tools 
 - [ ] Deploy with Kubernetes 
 - [ ] CI pipeline
 - [ ] Metrics
@@ -54,11 +54,22 @@ To run the backend API server (With sbt server)
 - `make backend-up`
 
 Run the frontend in a separate **Terminal 2**
+- `make frontend-compile`
 - `make frontend-up`
 - `open http://localhost:3000`
 
 Check processes that are running
 - `make status`
+
+<br>
+
+> Port number for services  
+
+| Service  | Default Port | Environment Var      | Usage                                    |
+|----------|--------------|----------------------|------------------------------------------|
+| frontend | :3000        |                      | http://localhost:3000/                   |
+| backend  | :4000        | BLOGAPP_BACKEND_PORT | http://localhost:4000/scrawls            |
+| postgres | :5432        |                      | jdbc:postgresql://localhost:5432/blogapp |
 
 <br><hr><br>
 
@@ -96,6 +107,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │   ├── index.html
 │   ├── main.js
 │   ├── main.scss
+│   ├── medio/                 CSS/JS UI Template folder, "Medio" theme
 │   ├── node_modules/
 │   ├── package.json
 │   ├── postcss.config.js

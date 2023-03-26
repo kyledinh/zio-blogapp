@@ -1,3 +1,7 @@
+0.0.6
+- backend port to default :4000 or BLOGAPP_BACKEND_PORT env 
+- CRUD opertions for person
+
 0.0.5
 - /medio template page  
 - more pages/view for persons, scrawls

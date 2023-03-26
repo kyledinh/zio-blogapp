@@ -48,7 +48,7 @@ final case class BlogServer(
   def start: ZIO[Any, Throwable, Unit] =
     for {
       _    <- migrations.reset.repeat(Schedule.fixed(15.minutes)).fork
-      port <- System.envOrElse("PORT", "8080").map(_.toInt)
+      port <- System.envOrElse("BLOGAPP_BACKEND_PORT", "4000").map(_.toInt)
       _    <- Server.start(port, allRoutes @@ Middleware.cors() @@ loggingMiddleware)
     } yield ()
 
