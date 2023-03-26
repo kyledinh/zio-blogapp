@@ -9,14 +9,13 @@ object MainPage {
     div(
       SiteMobileMenu(),
       SiteNav(),
-      div(cls("section bg-dark")),
+      div(cls("section bg-dark"), padding("50px 0px")),
       child <-- Router.router.$currentPage.map {
-        // case Page.OwnersPage         => OwnerIndexView()
-        case Page.PersonPage(id)      => PersonView(id)
         case Page.HomePage            => HomeView()
         case Page.BoardPage           => BoardView()
         case Page.MedioPage           => MedioView()
         case Page.PeoplePage          => PeopleView()
+        case Page.PersonPage(id)      => PersonView(id)
       }
     )
 }
