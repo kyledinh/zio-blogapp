@@ -54,12 +54,13 @@ To run the backend API server (With sbt server)
 - `make backend-up`
 
 Run the frontend in a separate **Terminal 2**
-- `make frontend-compile`
 - `make frontend-up`
+- `make frontend-compile` (once up, just recompile and vite will reload the webpage)
 - `open http://localhost:3000`
 
 Check processes that are running
-- `make status`
+- `make status` (see that the SBT Server is running)
+- `make check-postgres` (see what's in the database)
 
 <br>
 

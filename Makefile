@@ -41,6 +41,15 @@ codegen:
 codegen-clear:
 	rm -rf output/*.*
 
+docker-build:
+	sbt docker:publishLocal
+	docker tag blogapp-backend:$(SEMVER) kyledinh/blogapp-backend:$(SEMVER)
+	docker images | grep blogapp 
+
+docker-up:
+	@echo "Running the backend as a Docker container, will connect to database through `host.docker.internal`"	
+	docker run -p 4000:4000 -e DATABASE_URL=postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@host.docker.internal:5432/$(POSTGRES_DB) blogapp-backend:$(SEMVER)
+
 frontend-compile:
 	@sbtn frontend/fastLinkJS
 	@cp frontend/target/scala-3.1.3/blogapp-frontend-fastopt/main.js js-frontend/.
