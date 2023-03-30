@@ -29,6 +29,9 @@ object QuillContext extends PostgresZioJdbcContext(SnakeCase) {
         config = ConfigFactory.parseMap(
                    configMap.updated("dataSourceClassName", "org.postgresql.ds.PGSimpleDataSource").asJava
                  )
+        // FOR DEBUGGING: TODO REMOVE LATER
+        _ <- ZIO.logInfo("DATABASE_URL > postgresURL: " + postgresURL.toString())
+        _ <- ZIO.logInfo("config: " + config.toString())
       } yield Quill.DataSource.fromConfig(config).orDie
     }.flatten
 

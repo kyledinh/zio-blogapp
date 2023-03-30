@@ -24,7 +24,7 @@ object Main extends ZIOAppDefault {
         QuillContext.dataSourceLayer,
         PersonServiceLive.layer,
         ScrawlServiceLive.layer,
-        Migrations.layer,
+        // Migrations.layer,
         SLF4J.slf4j,
         removeDefaultLoggers,
 

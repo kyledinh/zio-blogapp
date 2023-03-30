@@ -15,8 +15,8 @@ object Requests {
   private val backend: SttpBackend[Future, capabilities.WebSockets] = FetchBackend()
 
   private val baseUrl =
-    if (document.location.host.contains("localhost"))
-      uri"http://localhost:4000"
+    if (document.location.host.contains("kyledinh.com"))
+      uri"https://blogapi.kyledinh.com"
     else
       uri"http://localhost:4000"
 
