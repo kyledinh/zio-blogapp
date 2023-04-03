@@ -82,6 +82,17 @@ Check processes that are running
 - `make docker-push` - customize your DOCKER_HUB_REPO in Makefile to you account  
 - View the [Docker Hub Repo](https://hub.docker.com/u/kyledinh)
 
+### Setup for Kubernetes Local Stack
+- `cd kubernetes` change directory to work with the `desktop-demo.sh` which is a safe script, designed to work ONLY with the desktop context in the demo namespace
+- `./desktop-demo.sh init` will create the `demo` namespace
+- `./desktop-demo.sh up` will create/update the deployments to the desktop Kubernetes Cluster
+- `./desktop-demo.sh init-db` will perform the initial database migration to the postgres container
+
+### Command to View/Edit the Kubernetes Stack
+- `./desktop-demo.sh info` will get you info on the environment and all deployed service, pods, config maps, etc...
+- `./desktop-demo.sh log <search-pattern>` will find the pod by search pattern and print the log
+- `./desktop-demo.sh ex <search-pattern>` will start a bash session for a pod that matches the search pattern
+
 
 <br><hr><br>
 
