@@ -1,0 +1,47 @@
+## BLOGAPP.KYLEDINH.COM
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-blogapp-database
+spec:
+  selector:
+    app: app-blogapp-database
+  ports:
+    - port: 5432 
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app-blogapp-database
+  labels:
+    app: app-blogapp-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-blogapp-database
+  template:
+    metadata:
+      labels:
+        app: app-blogapp-database
+    spec:
+      containers:
+        - name: blogapp-database
+          image: postgres:15.2 
+          imagePullPolicy: Always ## IfNotPresent
+          env:
+          - name: POSTGRES_DB 
+            value: "blogapp" 
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "password"
+          # resources:
+          #   limits:
+          #     memory: "64Mi"
+          #     cpu: "1"
+          resources:
+          #  
+          ports:
+            - containerPort: 5432 

@@ -1,0 +1,44 @@
+## BLOGAPP.KYLEDINH.COM
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-blogapp-web
+spec:
+  type: LoadBalancer
+  selector:
+    app: app-blogapp-web
+  ports:
+    - port: 3000 
+      targetPort: 80
+      protocol: TCP
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app-blogapp-web
+  labels:
+    app: app-blogapp-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-blogapp-web
+  template:
+    metadata:
+      labels:
+        app: app-blogapp-web
+    spec:
+      containers:
+        - name: blogapp-nginx 
+          image: kyledinh/blogapp-nginx:0.0.7-1415d2f
+          imagePullPolicy: Always ## IfNotPresent
+          # resources:
+          #   limits:
+          #     memory: "64Mi"
+          #     cpu: "1"
+          resources:
+          #  
+          ports:
+            - containerPort: 80 
+---

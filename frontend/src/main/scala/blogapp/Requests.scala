@@ -15,10 +15,10 @@ object Requests {
   private val backend: SttpBackend[Future, capabilities.WebSockets] = FetchBackend()
 
   private val baseUrl =
-    if (document.location.host.contains("localhost"))
-      uri"http://localhost:8080"
+    if (document.location.host.contains("kyledinh.com"))
+      uri"https://blogapi.kyledinh.com"
     else
-      uri"http://localhost:8080"
+      uri"http://localhost:4000"
 
   def getRequest[A: JsonCodec](path: Any*): EventStream[A] = {
     val request = quickRequest.get(uri"$baseUrl/$path")

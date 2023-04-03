@@ -62,6 +62,7 @@ lazy val backend = (project in file("backend"))
     Test / fork := true,
     testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
+  .enablePlugins(DockerPlugin)
   .enablePlugins(JavaAppPackaging)
   .settings(sharedSettings)
   .enablePlugins(FlywayPlugin)

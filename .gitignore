@@ -6,7 +6,9 @@ target
 node_modules
 dist
 
+
 docker_pg_vol/
+docker/version
 output/
 ignored/
 ign-*
@@ -14,3 +16,4 @@ ign-*
 .metals
 .vscode
 metals.sbt
+version

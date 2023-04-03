@@ -11,10 +11,10 @@
 - [x] Update from Scala 2 to Scala 3.1.3
 - [x] Docker for Postgres Database
 - [x] Backend API for Blog App
-- [x] Frontend with Scala.js/Laminar
+- [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
 - [ ] Update Tests
-- [ ] Tools 
-- [ ] Deploy with Kubernetes 
+- [ ] Developer Tools 
+- [x] Deploy with Kubernetes 
 - [ ] CI pipeline
 - [ ] Metrics
 
@@ -55,10 +55,44 @@ To run the backend API server (With sbt server)
 
 Run the frontend in a separate **Terminal 2**
 - `make frontend-up`
+- `make frontend-compile` (once up, just recompile and vite will reload the webpage)
 - `open http://localhost:3000`
 
 Check processes that are running
-- `make status`
+- `make status` (see that the SBT Server is running)
+- `make check-postgres` (see what's in the database)
+
+<br>
+
+> Port number for services  
+
+| Service  | Default Port | Environment Var      | Usage                                    |
+|----------|--------------|----------------------|------------------------------------------|
+| frontend | :3000        |                      | http://localhost:3000/                   |
+| backend  | :4000        | BLOGAPP_BACKEND_PORT | http://localhost:4000/scrawls            |
+| postgres | :5432        |                      | jdbc:postgresql://localhost:5432/blogapp |
+
+<br><hr><br>
+
+## Deploy to Kubernetes Cluster
+> This project example will use the my Docker Hub public account at https://hub.docker.com/u/kyledinh
+### Build the Docker images
+
+- `make docker-build` - builds the backend and frontend images
+- `make docker-push` - customize your DOCKER_HUB_REPO in Makefile to you account  
+- View the [Docker Hub Repo](https://hub.docker.com/u/kyledinh)
+
+### Setup for Kubernetes Local Stack
+- `cd kubernetes` change directory to work with the `desktop-demo.sh` which is a safe script, designed to work ONLY with the desktop context in the demo namespace
+- `./desktop-demo.sh init` will create the `demo` namespace
+- `./desktop-demo.sh up` will create/update the deployments to the desktop Kubernetes Cluster
+- `./desktop-demo.sh init-db` will perform the initial database migration to the postgres container
+
+### Command to View/Edit the Kubernetes Stack
+- `./desktop-demo.sh info` will get you info on the environment and all deployed service, pods, config maps, etc...
+- `./desktop-demo.sh log <search-pattern>` will find the pod by search pattern and print the log
+- `./desktop-demo.sh ex <search-pattern>` will start a bash session for a pod that matches the search pattern
+
 
 <br><hr><br>
 
@@ -96,6 +130,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │   ├── index.html
 │   ├── main.js
 │   ├── main.scss
+│   ├── medio/                 CSS/JS UI Template folder, "Medio" theme
 │   ├── node_modules/
 │   ├── package.json
 │   ├── postcss.config.js

@@ -46,3 +46,7 @@ title.contains("Debug")
     ]
 }
 ```
+
+## Resources
+
+- [SBT Docker Plugin](https://www.scala-sbt.org/sbt-native-packager/formats/docker.html)

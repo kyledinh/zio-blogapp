@@ -1,6 +1,6 @@
 package blogapp.server
 
-import blogapp.Migrations
+// import blogapp.Migrations
 import zhttp.http.*
 import zhttp.http.middleware.HttpMiddleware
 import zhttp.service.Server
@@ -9,7 +9,7 @@ import zio.*
 final case class BlogServer(
     personRoutes: PersonRoutes,
     scrawlRoutes: ScrawlRoutes,
-    migrations: Migrations
+    // migrations: Migrations
 ) {
 
   val allRoutes: HttpApp[Any, Throwable] = {
@@ -39,16 +39,10 @@ final case class BlogServer(
         }
     }
 
-  /** Resets the database to the initial state every 15 minutes to clean up the
-    * deployed Heroku data. Then, it obtains a port from the environment on
-    * which to start the server. In the case of being run in production, the
-    * port will be provided by Heroku, otherwise the port will be 8080. The
-    * server is then started on the given port with the routes provided.
-    */
   def start: ZIO[Any, Throwable, Unit] =
     for {
-      _    <- migrations.reset.repeat(Schedule.fixed(15.minutes)).fork
-      port <- System.envOrElse("PORT", "8080").map(_.toInt)
+      // _    <- migrations.reset.repeat(Schedule.fixed(15.minutes)).fork
+      port <- System.envOrElse("BLOGAPP_BACKEND_PORT", "4000").map(_.toInt)
       _    <- Server.start(port, allRoutes @@ Middleware.cors() @@ loggingMiddleware)
     } yield ()
 
@@ -56,7 +50,8 @@ final case class BlogServer(
 
 object BlogServer {
 
-  val layer: ZLayer[PersonRoutes with ScrawlRoutes with Migrations, Nothing, BlogServer] =
+  // val layer: ZLayer[PersonRoutes with ScrawlRoutes with Migrations, Nothing, BlogServer] =
+  val layer: ZLayer[PersonRoutes with ScrawlRoutes, Nothing, BlogServer] =
     ZLayer.fromFunction(BlogServer.apply _)
 
 }

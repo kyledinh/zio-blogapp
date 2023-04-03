@@ -1,0 +1,47 @@
+## BLOGAPP.KYLEDINH.COM
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-blogapp-api
+spec:
+  type: LoadBalancer
+  selector:
+    app: app-blogapp-api
+  ports:
+    - port: 4000 
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app-blogapp-api
+  labels:
+    app: app-blogapp-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-blogapp-api
+  template:
+    metadata:
+      labels:
+        app: app-blogapp-api
+    spec:
+      containers:
+        - name: blogapp-api
+          image: kyledinh/blogapp-backend:0.0.7
+          imagePullPolicy: Always ## IfNotPresent
+          env:
+          - name: BLOGAPP_BACKEND_PORT
+            value: "4000"
+          - name: DATABASE_URL 
+            value: "postgres://postgres:password@svc-blogapp-database:5432/blogapp"
+            # postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@host.docker.internal:5432/$(POSTGRES_DB)
+          # resources:
+          #   limits:
+          #     memory: "64Mi"
+          #     cpu: "1"
+          resources:
+          #  
+          ports:
+            - containerPort: 4000 

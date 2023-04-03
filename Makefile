@@ -7,6 +7,7 @@ SEMVER ?= $(shell head -n 1 sem-version)
 
 DOCKER_PG_VOL := docker_pg_vol
 DOCKER_PG_CONTAINER := docker_pg_container
+DOCKER_HUB_REPO := kyledinh
 
 ## Sync vars with backend/src/main/scala/blogapp/QuillContext.scala
 POSTGRES_DB := blogapp
@@ -40,6 +41,26 @@ codegen:
 
 codegen-clear:
 	rm -rf output/*.*
+
+## docker:publishLocal is still a blackbox, but will produce a working Docker image
+docker-build:
+	sbt docker:publishLocal 
+	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
+	cd docker/ && ./build-blogapp-nginx-frontend.sh	
+	docker images | grep blogapp 
+
+## customize DOCKER_HUB_REPO to your repository
+docker-push:
+	docker push $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
+	docker push $(DOCKER_HUB_REPO)/blogapp-nginx:$(SEMVER)-$(GITTAG)
+
+docker-up:
+	@echo "Running the backend as a Docker container, will connect to database through `host.docker.internal`"	
+	docker run -p 4000:4000 -e DATABASE_URL=postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@host.docker.internal:5432/$(POSTGRES_DB) blogapp-backend:$(SEMVER)
+
+docker-front-up:
+	@echo "Running the frontend as a Docker container, will connect to database through `host.docker.internal`"	
+	docker run -p 80:80 kyledinh/blogapp-nginx:latest
 
 frontend-compile:
 	@sbtn frontend/fastLinkJS
