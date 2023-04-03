@@ -14,7 +14,7 @@
 - [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
 - [ ] Update Tests
 - [ ] Developer Tools 
-- [ ] Deploy with Kubernetes 
+- [x] Deploy with Kubernetes 
 - [ ] CI pipeline
 - [ ] Metrics
 
@@ -71,6 +71,17 @@ Check processes that are running
 | frontend | :3000        |                      | http://localhost:3000/                   |
 | backend  | :4000        | BLOGAPP_BACKEND_PORT | http://localhost:4000/scrawls            |
 | postgres | :5432        |                      | jdbc:postgresql://localhost:5432/blogapp |
+
+<br><hr><br>
+
+## Deploy to Kubernetes Cluster
+> This project example will use the my Docker Hub public account at https://hub.docker.com/u/kyledinh
+### Build the Docker images
+
+- `make docker-build` - builds the backend and frontend images
+- `make docker-push` - customize your DOCKER_HUB_REPO in Makefile to you account  
+- View the [Docker Hub Repo](https://hub.docker.com/u/kyledinh)
+
 
 <br><hr><br>
 

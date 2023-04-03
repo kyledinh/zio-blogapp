@@ -6,8 +6,10 @@ APP_IMG_NAME=$REPO_BASE/blogapp-nginx
 DOCKERFILE=blogapp-nginx.dockerfile
 
 ## VERSION
-echo; echo $(head -n 1 ../sem-version)-$(git show -s --pretty="%h") >| version
+echo; echo $(head -n 1 ../sem-version)-$(git describe --tags --always --dirty) >| version
 BUILD_VERSION=$(cat version)
+
+echo "BUILDING $REPO_BASE/$APP_IMG_NAME-$BUILD_VERSION" 
 
 ## BUILD SCALA.JS
 cp -R ../js-frontend ignored/.

@@ -16,3 +16,4 @@ ign-*
 .metals
 .vscode
 metals.sbt
+version
