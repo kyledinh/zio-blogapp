@@ -12,7 +12,7 @@ object PubStatus {
     override def status: String = "Select ..."
   }
 
-  case object Draft extends PubStatus  {
+  case object Draft extends PubStatus {
     override def status: String = "Draft"
   }
 
@@ -28,14 +28,13 @@ object PubStatus {
     override def status: String = "Past"
   }
 
-
   /** Converts a string to its Species representation. */
   def fromString(s: String): PubStatus = s match {
-    case "Draft"    => Draft
-    case "Active"   => Active 
-    case "Private"  => Private 
-    case "Past"     => Past 
-    case _          => Empty
+    case "Draft"   => Draft
+    case "Active"  => Active
+    case "Private" => Private
+    case "Past"    => Past
+    case _         => Empty
   }
 
   val all: List[PubStatus] = List(Empty, Draft, Active, Private, Past)

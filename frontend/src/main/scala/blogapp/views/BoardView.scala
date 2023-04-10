@@ -1,45 +1,52 @@
 package blogapp.views
 
 import animus.*
-import com.raquo.laminar.api.L.{*, given}
-
 import blogapp.Component
 import blogapp.models.*
-import blogapp.views.components.{Components}
+import blogapp.views.components.Components
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
-import blogapp.{Requests}
-import java.time.LocalDate 
+import blogapp.Requests
+
+import com.raquo.laminar.api.L.{*, given}
+import com.raquo.laminar.nodes.ChildNode
+
+import java.time.LocalDate
+import scala.collection.immutable
 
 final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component {
 
   val isEditingVar = Var(false)
-  val rand = new scala.util.Random
+  val rand         = new scala.util.Random
 
-  val body: Div = 
-
-    div(cls("col-lg-4 mb-4 mb-lg-0"),
+  val el: Div =
+    div(
+      cls("col-lg-4 mb-4 mb-lg-0"),
       attrDataAos("fade-up"),
       attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
-      div(cls("service grayscale"),
-        div(cls("service-img"),
-          img(src("medio/images/img_" + rand.between(1,4) + ".jpg"))
-        ),
-        div(cls("service-inner"),
-          h3(s"${scrawl.title}"),
-          p(s"${scrawl.body}")
-        )
+      div(
+        cls("service grayscale"),
+        div(cls("service-img"), img(src("medio/images/img_" + rand.between(1, 4) + ".jpg"))),
+        div(cls("service-inner"), h3(s"${scrawl.title}"), p(s"${scrawl.body}"))
       )
-    ) 
+    )
 }
+
+// implicit val renderable: RenderableNode[EditableScrawlView] = new RenderableNode[EditableScrawlView] {
+//   // override def asNode(value: EditableScrawlView): ChildNode.Base =
+//   override def asNodeSeq(values: Seq[EditableScrawlView]): Seq[ChildNode.Base] = (Seq[EditableScrawlView] => Seq[ChildNode.Base])
+//   override def asNodeIterable(values: Iterable[EditableScrawlView]): Iterable[ChildNode.Base] = (Iterable[EditableScrawlView] => Iterable[ChildNode.Base])
+//   override def asNodeOption(value: Option[EditableScrawlView]): Option[ChildNode.Base] = (Option[EditableScrawlView] => Option[ChildNode.Base])
+// }
 
 final case class BoardView() extends Component {
 
   // Bus and Signals/Streams
   val reloadScrawlBus: EventBus[Unit] =
-    new EventBus[Unit] 
+    new EventBus[Unit]
 
   val $scrawls: Signal[List[Scrawl]] =
-    reloadScrawlBus.events.flatMap { _ =>
+    reloadScrawlBus.events
+      .flatMap { _ =>
         Requests.getAllScrawls()
       }
       .toSignal(List.empty)
@@ -49,37 +56,33 @@ final case class BoardView() extends Component {
   // Elements
   val body: Div = div(
     reloadScrawlBus.events --> { _ => () },
-    onMountCallback(_ => reloadScrawlBus.emit(())),      
-    div(cls("section bg-light"),
-      div(cls("container"),
-        h2("Scrawl Board"),
-        div(Components.formatDate(LocalDate.now())),
-        br(),
+    onMountCallback(_ => reloadScrawlBus.emit(())),
+    div(
+      cls("section bg-light"),
+      div(cls("container"), h2("Scrawl Board"), div(Components.formatDate(LocalDate.now())), br()),
+      div(
+        cls("container"),
+        div(
+          cls("row"),
+          children <-- $scrawls.map { scrawls =>
+            scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
+          }
+        )
       ),
-        div(cls("container"),
-          div(cls("row"),
-            children <-- $scrawls.map { scrawls =>
-              scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
-            }
-          )
-      ),
-      div(cls("section bg-light"),
-        div(cls("container"),
+      div(
+        cls("section bg-light"),
+        div(
+          cls("container"),
           "Scrawl Board showing all recent Scrawls!",
-          div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"),height("30px")))
+          div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"), height("30px")))
         )
       )
     )
   )
 
   private def bodyLink(name: String, url: String) =
-    a(cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"),
-      target("_blank"),
-      name,
-      href(url)
-    )
+    a(cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"), target("_blank"), name, href(url))
 }
-
 
 /*
 	<div class="section bg-light">
@@ -100,8 +103,7 @@ final case class BoardView() extends Component {
 					</div>
 				</div>
 
-
 			</div>
 		</div>
 	</div>
-  */
+ */

@@ -6,6 +6,7 @@ import org.scalajs.dom.document
 // import blogapp.models.api.{CreateOwner, CreatePet, CreateVisit, UpdateOwner, UpdatePet, UpdateVisit}
 import sttp.capabilities
 import sttp.client3.*
+import scala.concurrent.ExecutionContext.Implicits.global
 import zio.json.*
 import zio.json.internal.RetractReader
 
@@ -69,7 +70,6 @@ object Requests {
 
   // def addScrawl(createScrawl: CreateScrawl): EventStream[Scrawl] =
   //   postRequest[CreateScawl, Scrawl](createScrawl)("scrawls")
-
 
   implicit lazy val unitDecoder: JsonDecoder[Unit] =
     new JsonDecoder[Unit] {

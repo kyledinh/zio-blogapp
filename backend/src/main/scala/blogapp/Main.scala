@@ -7,10 +7,11 @@ import zio.logging.backend.SLF4J
 import zio.logging.removeDefaultLoggers
 // import zio.metrics.connectors.{MetricsConfig, newrelic}
 
-
 object Main extends ZIOAppDefault {
 
-  /** Configures Metrics to be run at a set interval, in our case every five seconds */
+  /** Configures Metrics to be run at a set interval, in our case every five
+    * seconds
+    */
   // val metricsConfig =
   //   ZLayer.succeed(MetricsConfig(5.seconds))
 
@@ -26,7 +27,7 @@ object Main extends ZIOAppDefault {
         ScrawlServiceLive.layer,
         // Migrations.layer,
         SLF4J.slf4j,
-        removeDefaultLoggers,
+        removeDefaultLoggers
 
         // newrelic.newRelicLayer,
         // newrelic.NewRelicConfig.fromEnvLayer,

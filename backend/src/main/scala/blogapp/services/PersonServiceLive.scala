@@ -8,22 +8,21 @@ import io.getquill.*
 
 import javax.sql.DataSource
 
-
 final case class PersonServiceLive(dataSource: DataSource) extends PersonService {
 
   import QuillContext._
 
   override def create(
-    firstName: String, 
-    lastName: String, 
-    address: String, 
-    phone: String, 
-    email: String 
-    ): Task[Person] =
+      firstName: String,
+      lastName: String,
+      address: String,
+      phone: String,
+      email: String
+  ): Task[Person] =
     for {
       person <- Person.make(firstName, lastName, address, phone, email)
-      _     <- run(query[Person].insertValue(lift(person))).provideEnvironment(ZEnvironment(dataSource))
-    } yield person 
+      _      <- run(query[Person].insertValue(lift(person))).provideEnvironment(ZEnvironment(dataSource))
+    } yield person
 
   override def delete(id: Uuid): Task[Unit] =
     run(query[Person].filter(_.id == lift(id)).delete)

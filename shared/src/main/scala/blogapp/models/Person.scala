@@ -14,19 +14,20 @@ final case class Person(
     email: String
 ) {
   def fullName: String = firstName + " " + lastName
-  def idString: String = id.toString().substring(id.toString().indexOf("(") +1, id.toString().indexOf(")")) // TODO: fixx UUID(####) format
+  def idString: String =
+    id.toString().substring(id.toString().indexOf("(") + 1, id.toString().indexOf(")")) // TODO: fixx UUID(####) format
 }
 
 object Person {
 
   def make(
-    firstName: String, 
-    lastName: String, 
-    address: String, 
-    phone: String, 
-    email: String 
+      firstName: String,
+      lastName: String,
+      address: String,
+      phone: String,
+      email: String
   ): UIO[Person] =
-    Uuid.random.map(Person(_, firstName, lastName, address, phone, email ))
+    Uuid.random.map(Person(_, firstName, lastName, address, phone, email))
 
   implicit val codec: JsonCodec[Person] =
     DeriveJsonCodec.gen[Person]

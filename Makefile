@@ -15,7 +15,7 @@ POSTGRES_USER := postgres
 POSTGRES_PASSWORD := password
 
 ## MAIN ##############################
-.PHONY: check codegen codegn-clear postgres setup
+.PHONY: check codegen codegn-clear fmt postgres setup
 
 backend-compile:
 	@sbtn backend/clean
@@ -61,6 +61,9 @@ docker-up:
 docker-front-up:
 	@echo "Running the frontend as a Docker container, will connect to database through `host.docker.internal`"	
 	docker run -p 80:80 kyledinh/blogapp-nginx:latest
+
+fmt:
+	@scalafmt
 
 frontend-compile:
 	@sbtn frontend/fastLinkJS

@@ -1,6 +1,6 @@
 package blogapp.models.api
 
-import blogapp.models.{Roles}
+import blogapp.models.Roles
 
 import zio.json.*
 

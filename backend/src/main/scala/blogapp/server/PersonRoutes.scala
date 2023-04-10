@@ -16,7 +16,7 @@ final case class PersonRoutes(service: PersonService) {
 
     case Method.GET -> !! / "person" / id =>
       for {
-        id    <- parseUuid(id)
+        id     <- parseUuid(id)
         person <- service.get(id)
       } yield Response.json(person.toJson)
 
@@ -44,7 +44,7 @@ final case class PersonRoutes(service: PersonService) {
                personUpdate.address,
                personUpdate.phone,
                personUpdate.email
-           )
+             )
       } yield Response.ok
 
     case Method.DELETE -> !! / "person" / id =>

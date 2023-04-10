@@ -14,7 +14,7 @@ object Uuid {
     ZIO.attempt {
       Uuid(UUID.fromString(id))
     }
-  
+
   // def asString: UIO[String] = id.toString
 
   implicit val codec: JsonCodec[Uuid] =
