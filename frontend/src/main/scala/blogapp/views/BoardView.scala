@@ -5,15 +5,18 @@ import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.Components
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
+import blogapp.views.RenderableNode.renderable
 import blogapp.Requests
 
 import com.raquo.laminar.api.L.{*, given}
+import com.raquo.laminar.modifiers.RenderableNode
 import com.raquo.laminar.nodes.ChildNode
 
 import java.time.LocalDate
 import scala.collection.immutable
+import javax.swing.Renderer
 
-final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component {
+final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component with RenderableNode[Div] {
 
   val isEditingVar = Var(false)
   val rand         = new scala.util.Random
@@ -31,12 +34,16 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
     )
 }
 
-// implicit val renderable: RenderableNode[EditableScrawlView] = new RenderableNode[EditableScrawlView] {
-//   // override def asNode(value: EditableScrawlView): ChildNode.Base =
-//   override def asNodeSeq(values: Seq[EditableScrawlView]): Seq[ChildNode.Base] = (Seq[EditableScrawlView] => Seq[ChildNode.Base])
-//   override def asNodeIterable(values: Iterable[EditableScrawlView]): Iterable[ChildNode.Base] = (Iterable[EditableScrawlView] => Iterable[ChildNode.Base])
-//   override def asNodeOption(value: Option[EditableScrawlView]): Option[ChildNode.Base] = (Option[EditableScrawlView] => Option[ChildNode.Base])
-// }
+object RenderableNode {
+  implicit val renderable: RenderableNode[EditableScrawlView] = new RenderableNode[EditableScrawlView] {
+    override def asNode(value: EditableScrawlView): ChildNode.Base                              = value.el
+    override def asNodeSeq(values: Seq[EditableScrawlView]): Seq[ChildNode.Base]                = values.map(_.el)
+    override def asNodeIterable(values: Iterable[EditableScrawlView]): Iterable[ChildNode.Base] = values.map(_.el)
+    override def asNodeOption(value: Option[EditableScrawlView]): Option[ChildNode.Base] = Some(
+      emptyNode
+    ) // TODO FIX THIS!!!
+  }
+}
 
 final case class BoardView() extends Component {
 
