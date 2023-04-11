@@ -5,7 +5,7 @@ import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.Components
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
-import blogapp.views.RenderableNode.renderable
+
 import blogapp.Requests
 
 import com.raquo.laminar.api.L.{*, given}
@@ -14,14 +14,13 @@ import com.raquo.laminar.nodes.ChildNode
 
 import java.time.LocalDate
 import scala.collection.immutable
-import javax.swing.Renderer
 
 final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends Component with RenderableNode[Div] {
 
   val isEditingVar = Var(false)
   val rand         = new scala.util.Random
 
-  val el: Div =
+  val body: Div =
     div(
       cls("col-lg-4 mb-4 mb-lg-0"),
       attrDataAos("fade-up"),
@@ -32,13 +31,19 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
         div(cls("service-inner"), h3(s"${scrawl.title}"), p(s"${scrawl.body}"))
       )
     )
+
+  def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base = ???
+  def asNodeIterable(values: Iterable[com.raquo.laminar.api.L.Div]): Iterable[com.raquo.laminar.nodes.ChildNode.Base] =
+    ???
+  def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = ???
+  def asNodeSeq(values: Seq[com.raquo.laminar.api.L.Div]): Seq[com.raquo.laminar.nodes.ChildNode.Base]         = ???
 }
 
-object RenderableNode {
+object EditableScrawlView {
   implicit val renderable: RenderableNode[EditableScrawlView] = new RenderableNode[EditableScrawlView] {
-    override def asNode(value: EditableScrawlView): ChildNode.Base                              = value.el
-    override def asNodeSeq(values: Seq[EditableScrawlView]): Seq[ChildNode.Base]                = values.map(_.el)
-    override def asNodeIterable(values: Iterable[EditableScrawlView]): Iterable[ChildNode.Base] = values.map(_.el)
+    override def asNode(value: EditableScrawlView): ChildNode.Base                              = value.body
+    override def asNodeSeq(values: Seq[EditableScrawlView]): Seq[ChildNode.Base]                = values.map(_.body)
+    override def asNodeIterable(values: Iterable[EditableScrawlView]): Iterable[ChildNode.Base] = values.map(_.body)
     override def asNodeOption(value: Option[EditableScrawlView]): Option[ChildNode.Base] = Some(
       emptyNode
     ) // TODO FIX THIS!!!
@@ -66,7 +71,7 @@ final case class BoardView() extends Component {
     onMountCallback(_ => reloadScrawlBus.emit(())),
     div(
       cls("section bg-light"),
-      div(cls("container"), h2("Scrawl Board"), div(Components.formatDate(LocalDate.now())), br()),
+      div(cls("container"), h2("Scrawl Board II"), div(Components.formatDate(LocalDate.now())), br()),
       div(
         cls("container"),
         div(

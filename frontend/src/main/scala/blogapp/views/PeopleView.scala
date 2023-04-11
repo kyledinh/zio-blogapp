@@ -1,13 +1,16 @@
 package blogapp.views
 
 import com.raquo.laminar.api.L.{*, given}
+import com.raquo.laminar.modifiers.RenderableNode
+import com.raquo.laminar.nodes.ChildNode
 
 import blogapp.Component
 import blogapp.models.*
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
+import blogapp.views.EditablePeopleView.renderable
 import blogapp.Requests
 
-final case class EditablePeopleView(person: Person, reload: () => Unit) extends Component {
+final case class EditablePeopleView(person: Person, reload: () => Unit) extends Component with RenderableNode[Div] {
 
   val isEditingVar = Var(false)
   val rand         = new scala.util.Random
@@ -28,6 +31,23 @@ final case class EditablePeopleView(person: Person, reload: () => Unit) extends 
         )
       )
     )
+
+  def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base = ???
+  def asNodeIterable(values: Iterable[com.raquo.laminar.api.L.Div]): Iterable[com.raquo.laminar.nodes.ChildNode.Base] =
+    ???
+  def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = ???
+  def asNodeSeq(values: Seq[com.raquo.laminar.api.L.Div]): Seq[com.raquo.laminar.nodes.ChildNode.Base]         = ???
+}
+
+object EditablePeopleView {
+  implicit val renderable: RenderableNode[EditablePeopleView] = new RenderableNode[EditablePeopleView] {
+    override def asNode(value: EditablePeopleView): ChildNode.Base                              = value.body
+    override def asNodeSeq(values: Seq[EditablePeopleView]): Seq[ChildNode.Base]                = values.map(_.body)
+    override def asNodeIterable(values: Iterable[EditablePeopleView]): Iterable[ChildNode.Base] = values.map(_.body)
+    override def asNodeOption(value: Option[EditablePeopleView]): Option[ChildNode.Base] = Some(
+      emptyNode
+    ) // TODO FIX THIS!!!
+  }
 }
 
 final case class PeopleView() extends Component {

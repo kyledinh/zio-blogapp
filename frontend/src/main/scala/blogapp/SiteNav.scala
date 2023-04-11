@@ -11,7 +11,7 @@ final case class SiteNav() extends Component {
 
   type Nav = nodes.ReactiveHtmlElement[dom.html.Div]
 
-  private def navLink(text: String, page: Page): Li = {
+  private def navLink(text: String, page: Page): LI = {
     val $isActive =
       Router.router.$currentPage.map { currentPage =>
         currentPage == page

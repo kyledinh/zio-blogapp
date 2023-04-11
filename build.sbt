@@ -2,7 +2,7 @@ import scala.io.Source
 
 val semVersion = Source.fromFile("sem-version").getLines.toList.head
 
-ThisBuild / scalaVersion     := "3.2.0"    // "3.1.3" "2.13.8"
+ThisBuild / scalaVersion     := "3.2.2"    // "3.1.3" "2.13.8"
 ThisBuild / version          := semVersion // "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.kyledinh"
 ThisBuild / organizationName := "kyledinh"
