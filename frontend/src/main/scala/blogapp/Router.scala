@@ -49,7 +49,7 @@ object Router {
     serializePage = page => page.toJson,                                    // serialize page data for storage in History API log
     deserializePage = pageStr => pageStr.fromJson[Page].getOrElse(HomePage) // deserialize the above
   )(
-    $popStateEvent = L.windowEvents(_.onPopState), // this is how Waypoint avoids an explicit dependency on Laminar
+    popStateEvents = L.windowEvents(_.onPopState), // this is how Waypoint avoids an explicit dependency on Laminar
     owner = L.unsafeWindowOwner                    // this router will live as long as the window
   )
 }

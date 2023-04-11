@@ -12,20 +12,16 @@ final case class SiteNav() extends Component {
   type Nav = nodes.ReactiveHtmlElement[dom.html.Div]
 
   private def navLink(text: String, page: Page): LI = {
-    val $isActive =
-      Router.router.$currentPage.map { currentPage =>
-        currentPage == page
-      }
+    val $isActive = false
+      // Router.router.$currentPage.map { currentPage =>
+      //   currentPage == page
+      // }
     li(
       cls(""),
       a(text, textDecoration.none, padding("10px 20px"), display("inline-block"), cursor.pointer),
       onClick --> { _ =>
         Router.router.pushState(page)
       },
-      cls <-- $isActive.map {
-        case true  => "active"
-        case false => ""
-      }
     )
   }
 

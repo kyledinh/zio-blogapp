@@ -83,7 +83,7 @@ lazy val frontend = (project in file("frontend"))
     libraryDependencies ++= Seq(
       "com.raquo"                     %%% "laminar"         % laminarVersion,
       "io.github.kitlangton"          %%% "animus"          % animusVersion,
-      "com.raquo"                     %%% "waypoint"        % "0.5.0",
+      "com.raquo"                     %%% "waypoint"        % "6.0.0", // "0.5.0",
       "io.github.cquiroz"             %%% "scala-java-time" % "2.4.0",
       "com.softwaremill.sttp.client3" %%% "core"            % "3.6.2",
       "dev.zio"                       %%% "zio-json"        % zioJsonVersion

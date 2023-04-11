@@ -10,7 +10,7 @@ object MainPage {
       SiteMobileMenu(),
       SiteNav(),
       div(cls("section bg-dark"), padding("50px 0px")),
-      child <-- Router.router.$currentPage.map {
+      child <-- Router.router.currentPageSignal.map {
         case Page.HomePage       => HomeView()
         case Page.BoardPage      => BoardView()
         case Page.MedioPage      => MedioView()
