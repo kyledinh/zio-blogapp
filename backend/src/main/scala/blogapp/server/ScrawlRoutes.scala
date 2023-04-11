@@ -18,21 +18,21 @@ final case class ScrawlRoutes(service: ScrawlService) {
     // Gets a single Scrawl found by their parsed ID and returns it as JSON.
     case Method.GET -> !! / "scrawl" / id =>
       for {
-        id  <- parseUuid(id)
+        id     <- parseUuid(id)
         scrawl <- service.get(id)
       } yield Response.json(scrawl.toJson)
 
     // Gets all of the Scrawls in the database associated with a particular user and returns them as JSON.
     case Method.GET -> !! / "scrawls" / "person" / id =>
       for {
-        id   <- parseUuid(id)
+        id      <- parseUuid(id)
         scrawls <- service.getForPerson(id)
       } yield Response.json(scrawls.toJson)
 
     case req @ Method.POST -> !! / "scrawl" =>
       for {
-        b <- parseBody[CreateScrawl](req)
-        scrawl <- service.create(b.title, b.body, b.createDate,  b.status, b.personId)
+        b      <- parseBody[CreateScrawl](req)
+        scrawl <- service.create(b.title, b.body, b.createDate, b.status, b.personId)
       } yield Response.json(scrawl.toJson)
 
     case req @ Method.PATCH -> !! / "scrawl" / id =>

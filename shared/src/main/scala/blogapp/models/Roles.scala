@@ -12,7 +12,7 @@ object Roles {
     override def role: String = "Select..."
   }
 
-  case object Author extends Roles  {
+  case object Author extends Roles {
     override def role: String = "Author"
   }
 
@@ -25,10 +25,10 @@ object Roles {
   }
 
   def fromString(s: String): Roles = s match {
-    case "Author"  => Author
-    case "Reader"  => Reader 
-    case "Editor"  => Editor 
-    case _         => Empty
+    case "Author" => Author
+    case "Reader" => Reader
+    case "Editor" => Editor
+    case _        => Empty
   }
 
   val all: List[Roles] = List(Empty, Author, Reader, Editor)

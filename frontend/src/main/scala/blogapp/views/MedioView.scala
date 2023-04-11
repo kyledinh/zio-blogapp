@@ -8,22 +8,26 @@ import blogapp.Component
 final case class MedioView() extends Component {
   val body: Div =
     div(
-		HeroSection(),
-		div(cls("section bg-light"),
-			div(cls("container"),
-				h2("Medio Template"),
-				p("A fullstack, idiomatic web app that serves as an example for best utilizing ZIO and the libraries within its ecosystem."),
-				p("This version of the website uses Scala 3!"),
-        	)
-		),
-		ServicesSection(),
-		PortfolioSection(),
-		GetStartedSection(),
-		OurServicesSection(),
-		// TestimonialSection(),
-		OtherInterestSection(),
-		NewsletterSection(),
-	)
+      HeroSection(),
+      div(
+        cls("section bg-light"),
+        div(
+          cls("container"),
+          h2("Medio Template"),
+          p(
+            "A fullstack, idiomatic web app that serves as an example for best utilizing ZIO and the libraries within its ecosystem."
+          ),
+          p("This version of the website uses Scala 3!")
+        )
+      ),
+      ServicesSection(),
+      PortfolioSection(),
+      GetStartedSection(),
+      OurServicesSection(),
+      // TestimonialSection(),
+      OtherInterestSection(),
+      NewsletterSection()
+    )
 
   private def bodyLink(name: String, url: String) =
     a(
@@ -37,15 +41,15 @@ final case class MedioView() extends Component {
 
 final case class MedioDemoView() extends Component {
 
-  val body: Div = 
-    div(cls("col-lg-4 mb-4 mb-lg-0"),
+  val body: Div =
+    div(
+      cls("col-lg-4 mb-4 mb-lg-0"),
       attrDataAos("fade-up"),
-      attrDataAosDelay("0"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
-    ) 
+      attrDataAosDelay("0") // data-aos="fade-up" data-aos-delay="0" : Medio theme
+    )
 
-
-/*
-	<div class="hero v-h-full overlay"> 
+  /*
+	<div class="hero v-h-full overlay">
 		<div class="img-bg rellax">
 			<img src="images/hero_1.jpg" alt="Image" class="img-fluid">
 		</div>
@@ -58,8 +62,8 @@ final case class MedioDemoView() extends Component {
 				</div>
 
 			</div>
-		</div> 
-  
+		</div>
+
     </div>
 
 	<div class="section bg-light">
@@ -381,7 +385,7 @@ final case class MedioDemoView() extends Component {
 					<div class="col-sm-4 col-md-4 col-lg-4">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Your name">
-						</div>	
+						</div>
 					</div>
 					<div class="col-sm-4 col-md-4 col-lg-4">
 						<div class="form-group">
@@ -395,10 +399,10 @@ final case class MedioDemoView() extends Component {
 
 				</div>
 			</form>
-		</div>	
+		</div>
 	</div>
 
 
-*/
+   */
 
 }

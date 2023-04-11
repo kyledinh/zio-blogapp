@@ -21,4 +21,3 @@ docker tag $APP_IMG_NAME:$BUILD_VERSION $APP_IMG_NAME:latest
 docker images | grep $APP_IMG_NAME
 
 ## UPLOAD TO DOCKER HUB
-@echo "run `make docker-push to upload to Container Repostory"

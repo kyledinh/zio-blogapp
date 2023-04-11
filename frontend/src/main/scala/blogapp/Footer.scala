@@ -1,7 +1,6 @@
-package blogapp 
+package blogapp
 
 import com.raquo.laminar.api.L.{*, given}
-
 
 final case class Footer() extends Component {
   def body =
@@ -100,4 +99,4 @@ final case class Footer() extends Component {
 			</div>
 		</div> <!-- /.container -->
 	</div> <!-- /.site-footer -->
-*/
+ */

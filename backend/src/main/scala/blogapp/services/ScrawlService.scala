@@ -8,11 +8,11 @@ import java.time.LocalDate
 trait ScrawlService {
 
   def create(
-    title: String, 
-    body: String,
-    createDate: LocalDate, 
-    status: PubStatus, 
-    personId: Uuid
+      title: String,
+      body: String,
+      createDate: LocalDate,
+      status: PubStatus,
+      personId: Uuid
   ): Task[Scrawl]
 
   def delete(id: Uuid): Task[Unit]
@@ -27,7 +27,7 @@ trait ScrawlService {
       id: Uuid,
       title: Option[String],
       body: Option[String],
-      status: Option[PubStatus] 
+      status: Option[PubStatus]
   ): Task[Unit]
 
 }

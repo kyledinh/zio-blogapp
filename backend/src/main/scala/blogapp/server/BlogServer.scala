@@ -8,19 +8,18 @@ import zio.*
 
 final case class BlogServer(
     personRoutes: PersonRoutes,
-    scrawlRoutes: ScrawlRoutes,
+    scrawlRoutes: ScrawlRoutes
     // migrations: Migrations
 ) {
 
   val allRoutes: HttpApp[Any, Throwable] = {
-    personRoutes.routes ++ scrawlRoutes.routes 
+    personRoutes.routes ++ scrawlRoutes.routes
   }
 
-  /** Logs the requests made to the server.
-    * It also adds a request ID to the logging context, so any further logging
-    * that occurs in the handler can be associated with the same request.
-    * For more information on the logging, see:
-    * https://zio.github.io/zio-logging/
+  /** Logs the requests made to the server. It also adds a request ID to the
+    * logging context, so any further logging that occurs in the handler can be
+    * associated with the same request. For more information on the logging,
+    * see: https://zio.github.io/zio-logging/
     */
   val loggingMiddleware: HttpMiddleware[Any, Nothing] =
     new HttpMiddleware[Any, Nothing] {

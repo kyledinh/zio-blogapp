@@ -4,21 +4,21 @@ import blogapp.models.{Person, Roles, Uuid}
 import zio.*
 
 trait PersonService {
- 
+
   def create(
-    firstName: String, 
-    lastName: String, 
-    address: String, 
-    phone: String, 
-    email: String 
+      firstName: String,
+      lastName: String,
+      address: String,
+      phone: String,
+      email: String
   ): Task[Person]
- 
+
   def delete(id: Uuid): Task[Unit]
- 
+
   def get(id: Uuid): Task[Option[Person]]
- 
+
   def getAll: Task[List[Person]]
- 
+
   def update(
       id: Uuid,
       firstName: Option[String],

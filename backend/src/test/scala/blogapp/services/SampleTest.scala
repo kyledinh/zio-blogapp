@@ -4,7 +4,6 @@ import blogapp.models.Uuid
 import zio.test._
 import zio.test.Assertion.*
 
-
 object OwnerIdSpec extends ZIOSpecDefault {
 
   def spec = suite("OwnerIdSpec")(

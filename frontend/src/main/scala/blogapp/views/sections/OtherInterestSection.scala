@@ -8,57 +8,61 @@ import blogapp.Component
 final case class OtherInterestSection() extends Component {
 
   val body: Div =
-      div(cls("section mb-5"),
-        div(cls("container"),
-          div(cls("row mb-5"),
-            div(cls("col-lg-7"), attrDataAos("fade-up"),
-              span(cls("subheading mb-2 d-inline-block"),
-              h2("You May Also be Interest ")
-              ),
+    div(
+      cls("section mb-5"),
+      div(
+        cls("container"),
+        div(
+          cls("row mb-5"),
+          div(
+            cls("col-lg-7"),
+            attrDataAos("fade-up"),
+            span(cls("subheading mb-2 d-inline-block"), h2("You May Also be Interest "))
+          )
+        ),
+        div(
+          cls("row"),
+          div(
+            cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"),
+            attrDataAos("fade-up"),
+            attrDataAosDelay("100"),
+            a(
+              href("#"),
+              img(src("medio/images/img_v_3-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
+              h3(cls("h4 mb-3"), a(href("#"), "Digital Advertising")),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing"),
+              p(cls("mb-0"), a(href("#"), cls("more"), "Find out more"))
             )
           ),
-          div(cls("row"),
-            div(cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"), attrDataAos("fade-up"), attrDataAosDelay("100"), 
-              a(href("#"), 
-                img(src("medio/images/img_v_3-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
-                h3(cls("h4 mb-3"),
-                  a(href("#"), "Digital Advertising")
-                ),
-                p("Lorem ipsum dolor sit amet, consectetur adipiscing"),
-                p(cls("mb-0"),
-                  a(href("#"), cls("more"), "Find out more")
-                )
-              )
-            ),
-            div(cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"), attrDataAos("fade-up"), attrDataAosDelay("200"), 
-              a(href("#"), 
-                img(src("medio/images/img_v_4-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
-                h3(cls("h4 mb-3"),
-                  a(href("#"), "Content Creation")
-                ),
-                p("Lorem ipsum dolor sit amet, consectetur adipiscing"),
-                p(cls("mb-0"),
-                  a(href("#"), cls("more"), "Find out more")
-                )
-              )
-            ),
-            div(cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"), attrDataAos("fade-up"), attrDataAosDelay("300"), 
-              a(href("#"), 
-                img(src("medio/images/img_v_6-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
-                h3(cls("h4 mb-3"),
-                  a(href("#"), "Time and Project Mgt.")
-                ),
-                p("Lorem ipsum dolor sit amet, consectetur adipiscing"),
-                p(cls("mb-0"),
-                  a(href("#"), cls("more"), "Find out more")
-                )
-              )
+          div(
+            cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"),
+            attrDataAos("fade-up"),
+            attrDataAosDelay("200"),
+            a(
+              href("#"),
+              img(src("medio/images/img_v_4-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
+              h3(cls("h4 mb-3"), a(href("#"), "Content Creation")),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing"),
+              p(cls("mb-0"), a(href("#"), cls("more"), "Find out more"))
             )
           ),
+          div(
+            cls("col-md-6 col-lg-4 mb-4 aos-init aos-animate"),
+            attrDataAos("fade-up"),
+            attrDataAosDelay("300"),
+            a(
+              href("#"),
+              img(src("medio/images/img_v_6-min.jpg"), alt("Image"), cls("img-fluid rounded mb-4")),
+              h3(cls("h4 mb-3"), a(href("#"), "Time and Project Mgt.")),
+              p("Lorem ipsum dolor sit amet, consectetur adipiscing"),
+              p(cls("mb-0"), a(href("#"), cls("more"), "Find out more"))
+            )
+          )
         )
       )
+    )
 
-/*
+  /*
 			<div class="row mb-5">
 				<div class="col-lg-7" data-aos="fade-up">
 					<span class="subheading mb-2 d-inline-block">Other Interests</span>
@@ -87,6 +91,6 @@ final case class OtherInterestSection() extends Component {
 			</div>
 		</div>
 	</div>
-*/
+   */
 
 }

@@ -22,16 +22,17 @@ final case class ScrawlServiceLive(dataSource: DataSource) extends ScrawlService
   implicit val decodeStatus: MappedEncoding[String, PubStatus] = MappedEncoding[String, PubStatus](PubStatus.fromString)
 
   override def create(
-    title: String, 
-    body: String,
-    createDate: java.time.LocalDate, 
-    status: PubStatus, 
-    personId: Uuid): Task[Scrawl] =
+      title: String,
+      body: String,
+      createDate: java.time.LocalDate,
+      status: PubStatus,
+      personId: Uuid
+  ): Task[Scrawl] =
     for {
       scrawl <- Scrawl.make(title, body, createDate, status, personId)
-      _   <- run(query[Scrawl].insertValue(lift(scrawl))).provideEnvironment(ZEnvironment(dataSource))
-      _   <- Metric.counter("scrawl.created").increment
-    } yield scrawl 
+      _      <- run(query[Scrawl].insertValue(lift(scrawl))).provideEnvironment(ZEnvironment(dataSource))
+      _      <- Metric.counter("scrawl.created").increment
+    } yield scrawl
 
   override def delete(id: Uuid): Task[Unit] =
     run(query[Scrawl].filter(_.id == lift(id)).delete)

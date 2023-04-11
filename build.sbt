@@ -2,22 +2,22 @@ import scala.io.Source
 
 val semVersion = Source.fromFile("sem-version").getLines.toList.head
 
-ThisBuild / scalaVersion     := "3.1.3" // "2.13.8"
+ThisBuild / scalaVersion     := "3.2.2"    // "3.1.3" "2.13.8"
 ThisBuild / version          := semVersion // "0.1.0-SNAPSHOT"
-ThisBuild / organization     := "com.example"
-ThisBuild / organizationName := "example"
+ThisBuild / organization     := "com.kyledinh"
+ThisBuild / organizationName := "kyledinh"
 
-val animusVersion               = "0.2.2" // "0.1.15"
-val flywayVersion               = "9.4.0" // "8.5.12"
-val laminarVersion              = "0.14.2" // "15.0.0-M6" // "0.14.2"
+val animusVersion               = "0.2.2"      // "0.1.15"
+val flywayVersion               = "9.4.0"      // "8.5.12"
+val laminarVersion              = "15.0.1"     // "0.14.2"
 val postgresVersion             = "42.3.6"
 val slf4jVersion                = "1.7.36"
 val zioHttpVersion              = "2.0.0-RC11" // "2.0.0-RC9"
-val zioJsonVersion              = "0.3.0" // "0.3.0-RC8"
-val zioLoggingVersion           = "2.1.1" // "2.0.0-RC10"
-val zioQuillVersion             = "4.5.0" // "4.0.0-RC1"
+val zioJsonVersion              = "0.3.0"      // "0.3.0-RC8"
+val zioLoggingVersion           = "2.1.1"      // "2.0.0-RC10"
+val zioQuillVersion             = "4.5.0"      // "4.0.0-RC1"
 val zioTestContainersVersion    = "0.6.0"
-val zioVersion                  = "2.0.2" // "2.0.0-RC6"
+val zioVersion                  = "2.0.2"      // "2.0.0-RC6"
 val zioMetricsConnectorsVersion = "2.0.0-RC6"
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
@@ -32,7 +32,7 @@ val sharedSettings = Seq(
     "-language:higherKinds",
     "-language:implicitConversions",
     "-unchecked",
-    "-Xfatal-warnings",
+    "-Xfatal-warnings"
   )
 )
 
@@ -83,10 +83,10 @@ lazy val frontend = (project in file("frontend"))
     libraryDependencies ++= Seq(
       "com.raquo"                     %%% "laminar"         % laminarVersion,
       "io.github.kitlangton"          %%% "animus"          % animusVersion,
-      "com.raquo"                     %%% "waypoint"        % "0.5.0",
+      "com.raquo"                     %%% "waypoint"        % "6.0.0", // "0.5.0",
       "io.github.cquiroz"             %%% "scala-java-time" % "2.4.0",
       "com.softwaremill.sttp.client3" %%% "core"            % "3.6.2",
-      "dev.zio" %%% "zio-json" % zioJsonVersion
+      "dev.zio"                       %%% "zio-json"        % zioJsonVersion
     )
   )
   .settings(sharedSettings)
