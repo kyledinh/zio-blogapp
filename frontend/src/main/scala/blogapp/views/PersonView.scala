@@ -67,11 +67,13 @@ class ScrawlDetailView(scrawl: Scrawl, reload: () => Unit) extends Component wit
       )
     )
 
-  def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base = ???
+  def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base               = body
+  def asNodeSeq(values: Seq[com.raquo.laminar.api.L.Div]): Seq[com.raquo.laminar.nodes.ChildNode.Base] = Seq(body)
   def asNodeIterable(values: Iterable[com.raquo.laminar.api.L.Div]): Iterable[com.raquo.laminar.nodes.ChildNode.Base] =
-    ???
-  def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = ???
-  def asNodeSeq(values: Seq[com.raquo.laminar.api.L.Div]): Seq[com.raquo.laminar.nodes.ChildNode.Base]         = ???
+    Iterable(body)
+  def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = Some(
+    body
+  )
 
 }
 
@@ -80,9 +82,7 @@ object ScrawlDetailView {
     override def asNode(value: ScrawlDetailView): ChildNode.Base                              = value.body
     override def asNodeSeq(values: Seq[ScrawlDetailView]): Seq[ChildNode.Base]                = values.map(_.body)
     override def asNodeIterable(values: Iterable[ScrawlDetailView]): Iterable[ChildNode.Base] = values.map(_.body)
-    override def asNodeOption(value: Option[ScrawlDetailView]): Option[ChildNode.Base] = Some(
-      emptyNode
-    ) // TODO FIX THIS!!!
+    override def asNodeOption(value: Option[ScrawlDetailView]): Option[ChildNode.Base]        = value.map(_.body)
   }
 }
 
