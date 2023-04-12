@@ -10,7 +10,7 @@ import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
 import blogapp.views.EditablePeopleView.renderable
 import blogapp.Requests
 
-final case class EditablePeopleView(person: Person, reload: () => Unit) extends Component with RenderableNode[Div] {
+case class EditablePeopleView(person: Person, reload: () => Unit) extends Component with RenderableNode[Div] {
 
   val isEditingVar = Var(false)
   val rand         = new scala.util.Random
@@ -32,11 +32,13 @@ final case class EditablePeopleView(person: Person, reload: () => Unit) extends 
       )
     )
 
-  def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base = ???
+  def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base               = body
+  def asNodeSeq(values: Seq[com.raquo.laminar.api.L.Div]): Seq[com.raquo.laminar.nodes.ChildNode.Base] = Seq(body)
   def asNodeIterable(values: Iterable[com.raquo.laminar.api.L.Div]): Iterable[com.raquo.laminar.nodes.ChildNode.Base] =
-    ???
-  def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = ???
-  def asNodeSeq(values: Seq[com.raquo.laminar.api.L.Div]): Seq[com.raquo.laminar.nodes.ChildNode.Base]         = ???
+    Iterable(body)
+  def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = Some(
+    body
+  )
 }
 
 object EditablePeopleView {
@@ -44,9 +46,7 @@ object EditablePeopleView {
     override def asNode(value: EditablePeopleView): ChildNode.Base                              = value.body
     override def asNodeSeq(values: Seq[EditablePeopleView]): Seq[ChildNode.Base]                = values.map(_.body)
     override def asNodeIterable(values: Iterable[EditablePeopleView]): Iterable[ChildNode.Base] = values.map(_.body)
-    override def asNodeOption(value: Option[EditablePeopleView]): Option[ChildNode.Base] = Some(
-      emptyNode
-    ) // TODO FIX THIS!!!
+    override def asNodeOption(value: Option[EditablePeopleView]): Option[ChildNode.Base]        = value.map(_.body)
   }
 }
 
