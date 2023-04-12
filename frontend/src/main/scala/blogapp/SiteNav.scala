@@ -13,15 +13,16 @@ final case class SiteNav() extends Component {
 
   private def navLink(text: String, page: Page): LI = {
     val $isActive = false
-      // Router.router.$currentPage.map { currentPage =>
-      //   currentPage == page
-      // }
+    // Router.router.$currentPage.map { currentPage =>
+    //   currentPage == page
+    // }
+
     li(
       cls(""),
       a(text, textDecoration.none, padding("10px 20px"), display("inline-block"), cursor.pointer),
       onClick --> { _ =>
         Router.router.pushState(page)
-      },
+      }
     )
   }
 
