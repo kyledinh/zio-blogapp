@@ -16,6 +16,7 @@ final case class SiteNav() extends Component {
     // Router.router.$currentPage.map { currentPage =>
     //   currentPage == page
     // }
+
     li(
       cls(""),
       a(text, textDecoration.none, padding("10px 20px"), display("inline-block"), cursor.pointer),

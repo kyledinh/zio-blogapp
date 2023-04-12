@@ -39,6 +39,7 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
   def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = Some(
     body
   )
+
 }
 
 object EditableScrawlView {

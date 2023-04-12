@@ -74,7 +74,6 @@ class ScrawlDetailView(scrawl: Scrawl, reload: () => Unit) extends Component wit
   def asNodeOption(value: Option[com.raquo.laminar.api.L.Div]): Option[com.raquo.laminar.nodes.ChildNode.Base] = Some(
     body
   )
-
 }
 
 object ScrawlDetailView {
