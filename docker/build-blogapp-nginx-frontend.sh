@@ -13,6 +13,7 @@ echo "BUILDING $REPO_BASE/$APP_IMG_NAME-$BUILD_VERSION"
 
 ## BUILD SCALA.JS
 cp -R ../js-frontend ignored/.
+echo "<!-- Build: $BUILD_VERSION -->" >> ignored/index.html
 
 ## BUILD 
 docker build -t $APP_IMG_NAME:$BUILD_VERSION -f $DOCKERFILE .
