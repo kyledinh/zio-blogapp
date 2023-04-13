@@ -17,3 +17,5 @@ ign-*
 .vscode
 metals.sbt
 version
+
+js-frontend/sem-version

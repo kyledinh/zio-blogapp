@@ -26,9 +26,11 @@
 | Software       | Version        | Install                                        |
 |----------------|----------------|------------------------------------------------|
 | JVM            | openjdk 17.0.4 | https://sdkman.io/install                      |
-| Scala          | 3.1.3          | https://www.scala-lang.org/download            |
-| sbt            | 1.7.1          | https://www.scala-sbt.org/download.html        |  
+| Scala          | 3.2.2          | https://www.scala-lang.org/download            |
+| sbt            | 1.8.2          | https://www.scala-sbt.org/download.html        |  
 | Zio            | 2.0.2          | https://zio.dev/getting_started                |
+| ScalaJS        | 1.13.1         | https://www.scala-js.org/                      |
+| Laminar        | 15.0.1         | https://laminar.dev/                           |
 | Postgres       | 14             | https://hub.docker.com/_/postgres              |
 | Docker Desktop | 4.3.x          | https://www.docker.com/products/docker-desktop |
 
@@ -119,6 +121,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │       └── test
 │
 ├── build.sbt                  Dependency manager 
+├── docker                     Scripts to build Docker images 
 ├── docker_pg_vol              Docker volume for Postgres DB
 ├── frontend                   Scala code that generates `main.js` for the webserver
 │   ├── src
@@ -138,6 +141,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │   ├── vite.config.js
 │   └── yarn.lock
 │
+├── kubernetes                 Files to deploy to Kube Cluster (locally) 
 ├── project                    The only project directory to be concerned with
 │   ├── build.properties       sbt version  
 │   └── plugins.sbt            plugins
