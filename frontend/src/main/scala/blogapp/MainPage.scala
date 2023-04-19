@@ -16,6 +16,7 @@ object MainPage {
         case Page.MedioPage      => MedioView()
         case Page.PeoplePage     => PeopleView()
         case Page.PersonPage(id) => PersonView(id)
-      }
+      },
+      Footer(),
     )
 }
