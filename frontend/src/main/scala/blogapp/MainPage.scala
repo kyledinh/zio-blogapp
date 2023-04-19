@@ -7,8 +7,9 @@ import blogapp.views._
 object MainPage {
   def body: Div =
     div(
-      SiteMobileMenu(),
-      SiteNav(),
+      // SiteMobileMenu(),
+      // SiteNav(),
+      Navbar(),
       div(cls("section bg-dark"), padding("50px 0px")),
       child <-- Router.router.currentPageSignal.map {
         case Page.HomePage       => HomeView()
