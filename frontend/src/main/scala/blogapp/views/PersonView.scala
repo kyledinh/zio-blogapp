@@ -38,32 +38,45 @@ final case class PersonDetailView(person: Person, reload: () => Unit) extends Co
 
   val body: Div =
     div(
-      cls("container"),
-      attrDataAos("fade-up"),
-      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
+      cls("row featurette"),
       div(
-        cls("service grayscale"),
-        div(
-          cls("service-inner"),
-          h3(s"${person.fullName}"),
-          p(s"${person.address}"),
-          p(s"${person.email}"),
-          a(cls("btn btn-black"), href(s"#"), "Edit")
+        cls("col-md-7 order-md-2"),
+        h5(s"${person.fullName}"),
+        p(s"${person.id}"),
+        p(s"${person.address}"),
+        p(s"${person.email}"),
+        a(cls("btn btn-black"), href(s"#"), "Edit")
+      ),
+      div(
+        cls("col-md-5 order-md-1"),
+        img(
+          cls("featurette-image img-fluid mx-auto"),
+          // data-src="holder.js/500x500/auto"
+          // alt="500x500"
+          src(
+            "data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22500%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20500%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_187a05b9c21%20text%20%7B%20fill%3A%23AAAAAA%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_187a05b9c21%22%3E%3Crect%20width%3D%22500%22%20height%3D%22500%22%20fill%3D%22%23EEEEEE%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22185.12109375%22%20y%3D%22261.1%22%3E500x500%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+          ),
+          // data-holder-rendered="true",
+          styleAttr("width: 240px; height: 240px;")
         )
       )
     )
 }
+// https://getbootstrap.com/docs/4.0/examples/carousel/
 
 class ScrawlDetailView(scrawl: Scrawl, reload: () => Unit) extends Component with RenderableNode[Div] {
 
   val body: Div =
     div(
-      cls("container"),
-      attrDataAos("fade-up"),
-      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
-      div(
-        cls("service grayscale"),
-        div(cls("service-inner"), h3(s"${scrawl.title}"), p(s"${scrawl.personId}"), p(s"${scrawl.body}"))
+      a(
+        cls("list-group-item list-group-item-action d-flex gap-3 py-3 "),
+        img(cls("rounded-circle flex-shrink-0"), src("https://github.com/twbs.png"), widthAttr(32), heightAttr(32)),
+        div(
+          cls("d-flex gap-2 w-100 justify-content-between"),
+          h5(s"${scrawl.title}"),
+          h6(s"${scrawl.id}"),
+          p(s"${scrawl.body}")
+        )
       )
     )
 
@@ -119,13 +132,14 @@ final case class PersonView(id: Uuid) extends Component {
       cls("section bg-light"),
       div(cls("container"), h3("Person:"), child <-- $person.map(PersonDetailView(_, () => reloadPersonBus.emit(()))))
     ),
+    div(padding("20px 0px")),
     div(
       cls("section bg-light"),
       div(
         cls("container"),
         h3("Scrawls:"),
         div(
-          cls("row"),
+          cls("list-group"),
           children <-- $scrawls.map { scrawls =>
             scrawls.map(ScrawlDetailView(_, () => reloadScrawlBus.emit(())))
           }

@@ -6,6 +6,8 @@ import com.raquo.laminar.nodes.ChildNode
 
 import blogapp.Component
 import blogapp.models.*
+import blogapp.Page
+import blogapp.Router
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
 import blogapp.views.EditablePeopleView.renderable
 import blogapp.Requests
@@ -19,7 +21,9 @@ case class EditablePeopleView(person: Person, reload: () => Unit) extends Compon
     div(
       a(
         cls("list-group-item list-group-item-action d-flex gap-3 py-3 "),
-        href(s"/person/${person.idString}"),
+        onClick --> { _ =>
+          Router.router.pushState(Page.PersonPage(person.id))
+        },
         img(cls("rounded-circle flex-shrink-0"), src("https://github.com/twbs.png"), widthAttr(32), heightAttr(32)),
         div(
           cls("d-flex gap-2 w-100 justify-content-between"),

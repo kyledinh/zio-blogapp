@@ -50,16 +50,15 @@ final case class Navbar() extends Component {
             cls("navbar-nav"),
             navLink("Home", HomePage),
             navLink("Board", BoardPage),
-            navLink("People", PeoplePage),
-            navLink("Medio", MedioPage)
+            navLink("People", PeoplePage)
           ),
           ul(
             cls("navbar-nav ms-md-auto"),
             li(
               cls("nav-item"),
-              a(cls("nav-link"), href("https://github.com/kyledinh/zio-blogapp"), i(cls("bi bi-github"), "GitHub"))
+              a(cls("nav-link"), href("https://github.com/kyledinh/zio-blogapp"), p(cls("bi bi-github"), " GitHub"))
             ),
-            li(cls("nav-item"), a(cls("nav-link"), href("https://kyledinh.com"), i(cls("bi bi-twitter"), "Website")))
+            li(cls("nav-item"), a(cls("nav-link"), href("https://kyledinh.com"), p(cls("bi bi-twitter"), " Website")))
           )
         )
       )

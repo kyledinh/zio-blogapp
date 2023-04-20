@@ -1,8 +1,8 @@
 package blogapp.views
 
-import animus.*
 import blogapp.Component
 import blogapp.models.*
+import blogapp.Page.*
 import blogapp.views.components.Components
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
 
@@ -23,7 +23,7 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
   val body: Div =
     div(
       cls("card mb-3"),
-      h3(s"${scrawl.title}"),
+      h5(s"${scrawl.title}"),
       img(src("medio/images/img_" + rand.between(1, 4) + ".jpg")),
       div(cls("card-body"), div(cls("service-inner"), p(s"${scrawl.body}")))
     )
