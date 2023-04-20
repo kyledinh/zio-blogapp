@@ -10,5 +10,5 @@ object Bootstrap {
 
   def attrAriaControls: HtmlAttr[String] = htmlAttr("aria-controls", StringAsIsCodec)
   def attrAriaExpanded: HtmlAttr[String] = htmlAttr("aria-expanded", StringAsIsCodec)
-  def attrAriaLabel:    HtmlAttr[String] = htmlAttr("aria-labels", StringAsIsCodec)
+  def attrAriaLabel: HtmlAttr[String]    = htmlAttr("aria-labels", StringAsIsCodec)
 }

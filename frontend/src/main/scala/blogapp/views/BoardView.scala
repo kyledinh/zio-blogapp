@@ -22,14 +22,10 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
 
   val body: Div =
     div(
-      cls("col-lg-4 mb-4 mb-lg-0"),
-      attrDataAos("fade-up"),
-      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
-      div(
-        cls("service grayscale"),
-        div(cls("service-img"), img(src("medio/images/img_" + rand.between(1, 4) + ".jpg"))),
-        div(cls("service-inner"), h3(s"${scrawl.title}"), p(s"${scrawl.body}"))
-      )
+      cls("card mb-3"),
+      h3(s"${scrawl.title}"),
+      img(src("medio/images/img_" + rand.between(1, 4) + ".jpg")),
+      div(cls("card-body"), div(cls("service-inner"), p(s"${scrawl.body}")))
     )
 
   def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base               = body
@@ -71,12 +67,12 @@ final case class BoardView() extends Component {
     reloadScrawlBus.events --> { _ => () },
     onMountCallback(_ => reloadScrawlBus.emit(())),
     div(
-      cls("section bg-light"),
+      cls("bs-docs-section clearfix"),
       div(cls("container"), h2("Scrawl Board II"), div(Components.formatDate(LocalDate.now())), br()),
       div(
         cls("container"),
         div(
-          cls("row"),
+          cls("row row-cols-md-2 row-cols-lg-3"),
           children <-- $scrawls.map { scrawls =>
             scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
           }

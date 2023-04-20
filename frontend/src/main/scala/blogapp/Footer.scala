@@ -7,14 +7,18 @@ import org.scalajs.dom
 
 final case class Footer() extends Component {
   def body =
-    div(idAttr("footer"),
-      div(cls("section container"),
-        div(cls("row"),
-          div(cls("col-lg-12"),
-            ul(cls("list-unstyled"),
-              footerLi("ZIO Docs", "https://zio.dev/"),
-              footerLi("GitHub Repo", "https://github.com/kyledinh/zio-blogapp")
-            )
+    div(
+      idAttr("footer"),
+      div(
+        cls("row"),
+        div(
+          cls("col-lg-12"),
+          ul(
+            cls("list-unstyled"),
+            footerLi("ZIO Docs", "https://zio.dev/"),
+            footerLi("GitHub Repo", "https://github.com/kyledinh/zio-blogapp"),
+            footerLi("Laminar Docs", "https://laminar.dev/documentation"),
+            footerLi("Simplex Bootstrap 5 Theme", "https://bootswatch.com/simplex/")
           )
         )
       )
