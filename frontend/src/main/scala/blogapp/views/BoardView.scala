@@ -24,7 +24,7 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
     div(
       cls("card mb-3"),
       h5(s"${scrawl.title}"),
-      img(src("medio/images/img_" + rand.between(1, 4) + ".jpg")),
+      img(src("simplex/images/scrawl-image-" + rand.between(1, 4) + ".jpg")),
       div(cls("card-body"), div(cls("service-inner"), p(s"${scrawl.body}")))
     )
 
