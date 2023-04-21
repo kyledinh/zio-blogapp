@@ -12,6 +12,7 @@
 - [x] Docker for Postgres Database
 - [x] Backend API for Blog App
 - [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
+- [x] Use a standard Bootstrap 5 theme
 - [ ] Update Tests
 - [ ] Developer Tools 
 - [x] Deploy with Kubernetes 
@@ -99,9 +100,17 @@ Check processes that are running
 <br><hr><br>
 
 ## Screenshots 
+> using the Simplex Bootstrap Theme:
 
 [![Board Page Screenshot][board-page-screenshot]](./docs/assets/blogapp-board-screenshot.png)
 [![People Page Screenshot][people-page-screenshot]](./docs/assets/blogapp-people-screenshot.png)
+[![Person Page Screenshot][person-page-screenshot]](./docs/assets/blogapp-person-screenshot.png)
+
+Or you can view screenshot with a custom Medio CSS theme, this version is preserved in the "medio" branch:
+- [Board Page Screenshot](./docs/assets/medio/blogapp-board-screenshot.png)
+- [People Page Screenshot](./docs/assets/medio/blogapp-people-screenshot.png)
+- [Medio Page Screenshot](./docs/assets/medio/blogapp-medio-screenshot.png)
+
 [![Medio Page Screenshot][medio-page-screenshot]](./docs/assets/blogapp-medio-screenshot.png)
 
 <br><hr><br>
@@ -133,10 +142,11 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │   ├── index.html
 │   ├── main.js
 │   ├── main.scss
-│   ├── medio/                 CSS/JS UI Template folder, "Medio" theme
+│   ├── medio/                 CSS/JS UI Template folder, "Medio" custom theme
 │   ├── node_modules/
 │   ├── package.json
 │   ├── postcss.config.js
+│   ├── simplex/               CSS/JS UI Template folder, "Simplex" Bootstrap theme
 │   ├── tailwind.config.js
 │   ├── vite.config.js
 │   └── yarn.lock
@@ -159,6 +169,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-screenshot]: js-frontend/zio-pet-clinic-webpage.png
-[board-page-screenshot]: docs/assets/blogapp-board-screenshot.png
-[people-page-screenshot]: docs/assets/blogapp-people-screenshot.png
-[medio-page-screenshot]: docs/assets/blogapp-medio-screenshot.png
+[board-page-screenshot]: docs/assets/simplex/blogapp-board-screenshot.png
+[people-page-screenshot]: docs/assets/simplex/blogapp-people-screenshot.png
+[person-page-screenshot]: docs/assets/simplex/blogapp-person-screenshot.png
+[medio-page-screenshot]: docs/assets/medio/blogapp-medio-screenshot.png

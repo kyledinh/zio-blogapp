@@ -6,6 +6,8 @@ import com.raquo.laminar.nodes.ChildNode
 
 import blogapp.Component
 import blogapp.models.*
+import blogapp.Page
+import blogapp.Router
 import blogapp.views.components.Medio.{attrDataAos, attrDataAosDelay}
 import blogapp.views.EditablePeopleView.renderable
 import blogapp.Requests
@@ -17,17 +19,17 @@ case class EditablePeopleView(person: Person, reload: () => Unit) extends Compon
 
   val body: Div =
     div(
-      cls("col-lg-4 mb-4 mb-lg-0"),
-      attrDataAos("fade-up"),
-      attrDataAosDelay("100"), // data-aos="fade-up" data-aos-delay="0" : Medio theme
-      div(
-        cls("service grayscale"),
+      a(
+        cls("list-group-item list-group-item-action d-flex gap-3 py-3 "),
+        onClick --> { _ =>
+          Router.router.pushState(Page.PersonPage(person.id))
+        },
+        img(cls("rounded-circle flex-shrink-0"), src("https://github.com/twbs.png"), widthAttr(32), heightAttr(32)),
         div(
-          cls("service-inner"),
-          h3(s"${person.fullName}"),
-          h5(s"${person.id}"),
-          p(s"${person.email}"),
-          a(cls("btn btn-black"), href(s"/person/${person.idString}"), "View")
+          cls("d-flex gap-2 w-100 justify-content-between"),
+          h5(s"${person.fullName}"),
+          h6(s"${person.id}"),
+          p(s"${person.email}")
         )
       )
     )
@@ -74,7 +76,7 @@ final case class PeopleView() extends Component {
         onMountCallback(_ => reloadPeopleBus.emit(())),
         h2("People : "),
         div(
-          cls("row"),
+          cls("list-group"),
           children <-- $persons.map { scrawls =>
             scrawls.map(EditablePeopleView(_, () => reloadPeopleBus.emit(())))
           }
