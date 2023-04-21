@@ -99,6 +99,14 @@ Check processes that are running
 
 <br><hr><br>
 
+### Check the Postgres DB in the Docker container
+
+- use: `make postgres-check`
+
+![Postgres DB](./docs/assets/postgres-check.png)
+
+<br><hr><br>
+
 ## Screenshots 
 > using the Simplex Bootstrap Theme:
 
@@ -106,7 +114,7 @@ Check processes that are running
 [![People Page Screenshot][people-page-screenshot]](./docs/assets/blogapp-people-screenshot.png)
 [![Person Page Screenshot][person-page-screenshot]](./docs/assets/blogapp-person-screenshot.png)
 
-Or you can view screenshot with a custom Medio CSS theme, this version is preserved in the "medio" branch:
+Or you can view screenshots with the custom Medio CSS theme, this version is preserved in the ["medio"](https://github.com/kyledinh/zio-blogapp/tree/medio) branch:
 - [Board Page Screenshot](./docs/assets/medio/blogapp-board-screenshot.png)
 - [People Page Screenshot](./docs/assets/medio/blogapp-people-screenshot.png)
 - [Medio Page Screenshot](./docs/assets/medio/blogapp-medio-screenshot.png)
