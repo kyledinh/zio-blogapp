@@ -42,7 +42,7 @@ final case class Navbar() extends Component {
       div(
         cls("container"),
         a(cls("navbar-brand"), href("/"), "ZIO BlogApp"),
-        navbarTogglerButton("#navbarResponsive"),
+        navbarTogglerButton("#navbarResponsive"), // Toggle Button
         div(
           cls("collapse navbar-collapse"),
           idAttr("navbarResponsive"),

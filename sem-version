@@ -1,6 +1,7 @@
 0.1.0
 - updated to use a standard Bootstrap 5 theme, so the code example are more universal
 - older Medio theme is preserved in a branch - https://github.com/kyledinh/zio-blogapp/tree/medio
+- bootstrap 5 needs event-handler.js and jquery 
 
 0.0.8
 - laminar v15.0.1
