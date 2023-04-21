@@ -10,24 +10,28 @@ final case class Footer() extends Component {
     div(
       idAttr("footer"),
       div(
-        cls("row"),
-        div(
-          cls("col-lg-12"),
-          ul(
-            cls("list-unstyled"),
-            footerLi("ZIO Docs", "https://zio.dev/"),
-            footerLi("GitHub Repo", "https://github.com/kyledinh/zio-blogapp"),
-            footerLi("Laminar Docs", "https://laminar.dev/documentation"),
-            footerLi("Simplex Bootstrap 5 Theme", "https://bootswatch.com/simplex/")
-          )
+        cls("d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"),
+        p(cls("col-md-4 mb-0 text-muted"), "© 2023 Company, Inc"),
+        a(
+          href("https://kyledinh.com"),
+          target("_blank"),
+          img(src("https://kyledinh.com/agency/img/logos/walvis.svg"), height("50px"))
+        ),
+        ul(
+          cls("nav col-md-4 justify-content-end"),
+          extLink("ZIO", "https://zio.dev/"),
+          extLink("GitHub", "https://github.com/kyledinh/zio-blogapp"),
+          extLink("Laminar", "https://laminar.dev/documentation"),
+          extLink("Bootstrap", "https://bootswatch.com/simplex/")
         )
       )
     )
 
-  private def footerLi(name: String, url: String) =
+  private def extLink(name: String, url: String) =
     li(
+      cls("nav-item"),
       a(
-        cls("text-gray-600 hover:text-gray-500 font-medium cursor-pointer ml-6"),
+        cls("nav-link px-2 text-muted"),
         target("_blank"),
         name,
         href(url)
@@ -36,22 +40,21 @@ final case class Footer() extends Component {
 }
 
 /*
-		<footer id="footer">
-			<div class="row">
-				<div class="col-lg-12">
-					<ul class="list-unstyled">
-						<li class="float-end"><a href="#top">Back to top</a></li>
-						<li><a href="https://blog.bootswatch.com/">Blog</a></li>
-						<li><a href="https://blog.bootswatch.com/rss/">RSS</a></li>
-						<li><a href="https://twitter.com/bootswatch">Twitter</a></li>
-						<li><a href="https://github.com/thomaspark/bootswatch">GitHub</a></li>
-						<li><a href="../help/#api">API</a></li>
-						<li><a href="../help/#donate">Donate</a></li>
-					</ul>
-					<p>Made by <a href="https://kyledinh.com/">Kyle Dinh</a>.</p>
-					<p>Code released under the <a href="https://github.com/kyledinh/zio-blogapp/blob/master/LICENSE">MIT License</a>.</p>
+// https://getbootstrap.com/docs/5.1/examples/footers/
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-muted">© 2021 Company, Inc</p>
 
-				</div>
-			</div>
-		</footer>
- */
+    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+  </footer>
+*/
+
