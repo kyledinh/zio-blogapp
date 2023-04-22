@@ -15,7 +15,7 @@ POSTGRES_USER := postgres
 POSTGRES_PASSWORD := password
 
 ## MAIN ##############################
-.PHONY: check codegen codegn-clear fmt postgres setup
+.PHONY: check codegen codegn-clear docker-build fmt frontend-build postgres setup
 
 backend-compile:
 	@sbtn backend/clean
@@ -44,7 +44,7 @@ codegen-clear:
 
 ## docker:publishLocal is still a blackbox, but will produce a working Docker image
 docker-build:
-  $(MAKE) frontend-compile 
+	$(MAKE) frontend-compile 
 	sbt docker:publishLocal 
 	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
 	cd docker/ && ./build-blogapp-nginx-frontend.sh	
