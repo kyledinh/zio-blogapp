@@ -26,6 +26,7 @@
   <script src="/simplex/js/jquery-3.5.1.slim.min.js"></script>
   <script src="/simplex/js/event-handler.js"></script>
   <script src="/simplex/js/bootstrap.bundle.min.js"></script>
+  <script src="/blogapp.js"></script>
 
 	<title>Blog App with ZIO and Scala3 and ScalaJS</title>
 </head>
@@ -34,6 +35,11 @@
 <div id="app"></div>
 <script src="/simplex/js/custom.js"></script>
 <script type="module" src="../main.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("blogappSemver").innerHTML = "(" + BLOGAPP_SEMVER + ")" + " © 2023, Kyle Dinh Industries";
+	}
+</script>
 
 </body>
 </html>

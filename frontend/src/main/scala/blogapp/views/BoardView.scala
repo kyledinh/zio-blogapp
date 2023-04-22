@@ -83,7 +83,6 @@ final case class BoardView() extends Component {
         div(
           cls("container"),
           "Scrawl Board showing all recent Scrawls!",
-          div(cls(""), img(src("https://kyledinh.com/agency/img/logos/walvis.svg"), height("30px")))
         )
       )
     )

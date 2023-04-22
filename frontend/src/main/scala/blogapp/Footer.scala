@@ -1,17 +1,19 @@
 package blogapp
 
+import blogapp.models.*
 import com.raquo.laminar.api.L.{*, given}
 import com.raquo.laminar.nodes
 import com.raquo.laminar.nodes.ReactiveElement
 import org.scalajs.dom
 
 final case class Footer() extends Component {
+
   def body =
     div(
       idAttr("footer"),
       div(
         cls("d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"),
-        p(cls("col-md-4 mb-0 text-muted"), "© 2023 Company, Inc"),
+        p(cls("col-md-4 mb-0 text-muted"), idAttr("blogappSemver")),
         a(
           href("https://kyledinh.com"),
           target("_blank"),

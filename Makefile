@@ -68,6 +68,7 @@ fmt:
 frontend-compile:
 	@sbtn frontend/fastLinkJS
 	@cp frontend/target/scala-3.2.2/blogapp-frontend-fastopt/main.js js-frontend/.
+	@echo "let BLOGAPP_SEMVER = '$(SEMVER)-$(GITTAG)';" > js-frontend/blogapp.js
 	@echo "$(SEMVER)-$(GITTAG)" > js-frontend/sem-version 
 
 frontend-up:
