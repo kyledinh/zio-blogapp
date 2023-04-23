@@ -18,7 +18,7 @@ POSTGRES_PASSWORD := password
 .PHONY: backend-check check codegen codegn-clear docker-build fmt frontend-build postgres setup
 
 backend-check:
-	@echo; ./scripts/curl/backedn-api-endpoint-check.sh	
+	@echo; ./scripts/curl/backend-api-endpoint-check.sh	
 
 backend-compile:
 	@sbtn backend/clean

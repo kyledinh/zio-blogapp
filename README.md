@@ -77,7 +77,7 @@ Run the frontend in a separate **Terminal 2**
 
 Check processes that are running
 - `make status` (see that the SBT Server is running)
-- `make check-postgres` (see what's in the database)
+- `make postgres-check` (see what's in the database)
 
 <br>
 
@@ -186,7 +186,9 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 ```
 
 ## Response HTML Tempate 
+- Simplex Bootstrap 5 Them - from [Bootswatch](https://bootswatch.com/simplex/)
 - Medio - from [Untree.co](https://untree.co/free-templates/medio-web-design-agency-template-free-download/)
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

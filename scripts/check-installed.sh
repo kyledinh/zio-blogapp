@@ -25,6 +25,14 @@ function fn_check_make {
   fi
 }
 
+function fn_check_node {
+  if command -v npm >/dev/null 2>&1; then
+    npm version
+  else
+    echo "!!! node/npm/yarn required, but it's not installed."; 
+  fi
+}
+
 function fn_check_sbt {
   if command -v sbt >/dev/null 2>&1; then
     sbt --version
@@ -50,3 +58,4 @@ fn_check_java
 fn_check_make
 fn_check_sbt
 fn_check_scala
+fn_check_node
