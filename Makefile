@@ -15,7 +15,10 @@ POSTGRES_USER := postgres
 POSTGRES_PASSWORD := password
 
 ## MAIN ##############################
-.PHONY: check codegen codegn-clear docker-build fmt frontend-build postgres setup
+.PHONY: backend-check check codegen codegn-clear docker-build fmt frontend-build postgres setup
+
+backend-check:
+	@echo; ./scripts/curl/backedn-api-endpoint-check.sh	
 
 backend-compile:
 	@sbtn backend/clean
@@ -29,10 +32,11 @@ backend-up:
 
 check: 
 	@echo "SEMVER: $(SEMVER)"
+	@echo "GITTAG: $(GITTAG)"
 	@echo "REPO_DIR: $(REPO_DIR)"
 	@echo "DOCKER_PG_VOL: $(DOCKER_PG_VOL)"
 	@echo "$(REPO_DIR)/$(DOCKER_PG_VOL)"
-	@scala --version
+	@echo; ./scripts/check-installed.sh	
 
 codegen:
 	## Requires btk-cli (https://github.com/kyledinh/btk-go)

@@ -3,6 +3,7 @@ package blogapp
 import com.raquo.laminar.api.L.{*, given}
 import blogapp.views.components.Bootstrap.*
 import blogapp.Page.*
+import blogapp.views.components.{Mox}
 import com.raquo.laminar.nodes
 import com.raquo.laminar.nodes.ReactiveElement
 import org.scalajs.dom
@@ -41,7 +42,7 @@ final case class Navbar() extends Component {
       cls("navbar navbar-expand-lg fixed-top navbar-dark bg-dark"),
       div(
         cls("container"),
-        a(cls("navbar-brand"), href("/"), "ZIO BlogApp"),
+        a(cls("navbar-brand"), href("/"), Mox.moxIcon(24), "ZIO BlogApp"),
         navbarTogglerButton("#navbarResponsive"), // Toggle Button
         div(
           cls("collapse navbar-collapse"),

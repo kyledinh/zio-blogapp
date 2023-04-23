@@ -1,6 +1,5 @@
-# ZIO Blog App: An sample application written with ZIO 2, Scala 3 and ScalaJS.
-
-> This is repo is taking the zio/zio-petclinic project and building it with Scala 3.1.3
+# ZIO Blog App
+> A sample application written with ZIO 2, Scala 3 and ScalaJS/Laminar.
 
 - Original repo: https://github.com/zio/zio-petclinic (Scala 2)
 - Original video: https://www.youtube.com/watch?v=3lopiYfWmdQ (Awesome!)
@@ -14,10 +13,24 @@
 - [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
 - [x] Use a standard Bootstrap 5 theme
 - [ ] Update Tests
-- [ ] Developer Tools 
+- [ ] Developer Tools/Guides 
 - [x] Deploy with Kubernetes 
 - [ ] CI pipeline
 - [ ] Metrics
+
+
+<br><hr><br>
+
+## Table of Contents
+- [About this project](#zio-blog-app)
+- [Quick Guide to localdev](#quick-guide-to-localdev-with-docker)
+- [Developer Guide](docs/guides/dev-guide.md)
+    - [Onboarding Guide](docs/guides/onboarding-guide.md) | [Onboarding Video]()
+    - [Backend Guide](docs/guides/backend-guide.md)
+    - [Frontend Guide](docs/guides/frontend-guide.md)
+    - [Troubleshooting Guide](docs/guides/troubleshooting-guide.md)
+- [Architecture Guide](docs/guide/architecture-guide.md)
+- [Markdown Guide](docs/guide/markdown-guide.md)
 
 
 <br><hr><br>
@@ -37,7 +50,7 @@
 
 <br><hr><br>
 
-## Running localdev with Docker
+## Quick Guide to localdev with Docker
 > Requires Docker to be running  
 
 ### Setup
