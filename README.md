@@ -1,5 +1,6 @@
 # ZIO Blog App
-> A sample application written with ZIO 2, Scala 3 and ScalaJS/Laminar.
+> A sample full-stack application written with ZIO 2, Scala 3 and ScalaJS/Laminar.
+This project is used to explore the development experience of using Scala 3 for the full stack and deploying to Kubernetes. 
 
 - Original repo: https://github.com/zio/zio-petclinic (Scala 2)
 - Original video: https://www.youtube.com/watch?v=3lopiYfWmdQ (Awesome!)
@@ -15,7 +16,7 @@
 - [ ] Update Tests
 - [ ] Developer Tools/Guides 
 - [x] Deploy with Kubernetes 
-- [ ] CI pipeline
+- [ ] Build pipeline
 - [ ] Metrics
 
 
@@ -29,8 +30,8 @@
     - [Backend Guide](docs/guides/backend-guide.md)
     - [Frontend Guide](docs/guides/frontend-guide.md)
     - [Troubleshooting Guide](docs/guides/troubleshooting-guide.md)
-- [Architecture Guide](docs/guide/architecture-guide.md)
-- [Markdown Guide](docs/guide/markdown-guide.md)
+- [Architecture Guide](docs/guides/architecture-guide.md)
+- [Markdown Guide](docs/guides/markdown-guide.md)
 
 
 <br><hr><br>
