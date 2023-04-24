@@ -10,9 +10,9 @@ final case class MedioView() extends Component {
     div(
       HeroSection(),
       div(
-        cls("section bg-light"),
+        cls := "section bg-light",
         div(
-          cls("container"),
+          cls := "container",
           h2("Medio Template"),
           p(
             "A fullstack, idiomatic web app that serves as an example for best utilizing ZIO and the libraries within its ecosystem."
@@ -31,10 +31,10 @@ final case class MedioView() extends Component {
 
   private def bodyLink(name: String, url: String) =
     a(
-      cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"),
-      target("_blank"),
+      cls    := "text-orange-700 hover:text-orange-600 text-l cursor-pointer",
+      target := "_blank",
       name,
-      href(url)
+      href := url
     )
 
 }
@@ -43,7 +43,7 @@ final case class MedioDemoView() extends Component {
 
   val body: Div =
     div(
-      cls("col-lg-4 mb-4 mb-lg-0"),
+      cls := "col-lg-4 mb-4 mb-lg-0",
       attrDataAos("fade-up"),
       attrDataAosDelay("0") // data-aos="fade-up" data-aos-delay="0" : Medio theme
     )

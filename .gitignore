@@ -19,3 +19,5 @@ metals.sbt
 version
 
 js-frontend/sem-version
+js-frontend/blogapp.js
+js-frontend/main.js

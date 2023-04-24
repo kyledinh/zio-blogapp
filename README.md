@@ -1,6 +1,6 @@
-# ZIO Blog App: An sample application written with ZIO 2, Scala 3 and ScalaJS.
-
-> This is repo is taking the zio/zio-petclinic project and building it with Scala 3.1.3
+# ZIO Blog App
+> A sample full-stack application written with ZIO 2, Scala 3 and ScalaJS/Laminar.
+This project is used to explore the development experience of using Scala 3 for the full stack and deploying to Kubernetes. 
 
 - Original repo: https://github.com/zio/zio-petclinic (Scala 2)
 - Original video: https://www.youtube.com/watch?v=3lopiYfWmdQ (Awesome!)
@@ -14,10 +14,24 @@
 - [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
 - [x] Use a standard Bootstrap 5 theme
 - [ ] Update Tests
-- [ ] Developer Tools 
+- [ ] Developer Tools/Guides 
 - [x] Deploy with Kubernetes 
-- [ ] CI pipeline
+- [ ] Build pipeline
 - [ ] Metrics
+
+
+<br><hr><br>
+
+## Table of Contents
+- [About this project](#zio-blog-app)
+- [Quick Guide to localdev](#quick-guide-to-localdev-with-docker)
+- [Developer Guide](docs/guides/dev-guide.md)
+    - [Onboarding Guide](docs/guides/onboarding-guide.md) | [Onboarding Video](https://youtu.be/GnQqMgYiG3E)
+    - [Backend Guide](docs/guides/backend-guide.md)
+    - [Frontend Guide](docs/guides/frontend-guide.md)
+    - [Troubleshooting Guide](docs/guides/troubleshooting-guide.md)
+- [Architecture Guide](docs/guides/architecture-guide.md)
+- [Markdown Guide](docs/guides/markdown-guide.md)
 
 
 <br><hr><br>
@@ -37,7 +51,7 @@
 
 <br><hr><br>
 
-## Running localdev with Docker
+## Quick Guide to localdev with Docker
 > Requires Docker to be running  
 
 ### Setup
@@ -63,7 +77,7 @@ Run the frontend in a separate **Terminal 2**
 
 Check processes that are running
 - `make status` (see that the SBT Server is running)
-- `make check-postgres` (see what's in the database)
+- `make postgres-check` (see what's in the database)
 
 <br>
 
@@ -172,7 +186,9 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 ```
 
 ## Response HTML Tempate 
+- Simplex Bootstrap 5 Them - from [Bootswatch](https://bootswatch.com/simplex/)
 - Medio - from [Untree.co](https://untree.co/free-templates/medio-web-design-agency-template-free-download/)
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

@@ -9,9 +9,9 @@ final case class HomeView() extends Component {
     div(
       cls("bs-docs-section clearfix"),
       div(
-        cls("row"),
+        cls := "row",
         div(
-          cls("container"),
+          cls := "container",
           h2("Welcome to Blog App"),
           div(
             "A fullstack, idiomatic web app that serves as an example for best utilizing ZIO and the libraries within its ecosystem."
@@ -25,5 +25,5 @@ final case class HomeView() extends Component {
     )
 
   private def bodyLink(name: String, url: String) =
-    a(cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"), target("_blank"), name, href(url))
+    a(cls := "text-orange-700 hover:text-orange-600 text-l cursor-pointer", target := "_blank", name, href := url)
 }

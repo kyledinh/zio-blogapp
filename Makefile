@@ -15,7 +15,10 @@ POSTGRES_USER := postgres
 POSTGRES_PASSWORD := password
 
 ## MAIN ##############################
-.PHONY: check codegen codegn-clear fmt postgres setup
+.PHONY: backend-check check codegen codegn-clear docker-build fmt frontend-build postgres setup
+
+backend-check:
+	@echo; ./scripts/curl/backend-api-endpoint-check.sh	
 
 backend-compile:
 	@sbtn backend/clean
@@ -29,10 +32,11 @@ backend-up:
 
 check: 
 	@echo "SEMVER: $(SEMVER)"
+	@echo "GITTAG: $(GITTAG)"
 	@echo "REPO_DIR: $(REPO_DIR)"
 	@echo "DOCKER_PG_VOL: $(DOCKER_PG_VOL)"
 	@echo "$(REPO_DIR)/$(DOCKER_PG_VOL)"
-	@scala --version
+	@echo; ./scripts/check-installed.sh	
 
 codegen:
 	## Requires btk-cli (https://github.com/kyledinh/btk-go)
@@ -44,6 +48,7 @@ codegen-clear:
 
 ## docker:publishLocal is still a blackbox, but will produce a working Docker image
 docker-build:
+	$(MAKE) frontend-compile 
 	sbt docker:publishLocal 
 	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
 	cd docker/ && ./build-blogapp-nginx-frontend.sh	
@@ -68,6 +73,7 @@ fmt:
 frontend-compile:
 	@sbtn frontend/fastLinkJS
 	@cp frontend/target/scala-3.2.2/blogapp-frontend-fastopt/main.js js-frontend/.
+	@echo "let BLOGAPP_SEMVER = '$(SEMVER)-$(GITTAG)';" > js-frontend/blogapp.js
 	@echo "$(SEMVER)-$(GITTAG)" > js-frontend/sem-version 
 
 frontend-up:
