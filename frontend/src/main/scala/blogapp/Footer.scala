@@ -9,18 +9,18 @@ import org.scalajs.dom
 final case class Footer() extends Component {
 
   def body =
-    div(
-      idAttr("footer"),
+    footerTag(
+      idAttr := "footer",
       div(
-        cls("d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"),
-        p(cls("col-md-4 mb-0 text-muted"), idAttr("blogappSemver")),
+        cls := "d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top",
+        p(cls := "col-md-4 mb-0 text-muted", idAttr := "blogappSemver"),
         a(
-          href("https://kyledinh.com"),
-          target("_blank"),
-          img(src("https://kyledinh.com/agency/img/logos/walvis.svg"), height("50px"))
+          href   := "https://kyledinh.com",
+          target := "_blank",
+          img(src := "https://kyledinh.com/agency/img/logos/walvis.svg", height := "50px")
         ),
         ul(
-          cls("nav col-md-4 justify-content-end"),
+          cls := "nav col-md-4 justify-content-end",
           extLink("ZIO", "https://zio.dev/"),
           extLink("GitHub", "https://github.com/kyledinh/zio-blogapp"),
           extLink("Laminar", "https://laminar.dev/documentation"),
@@ -31,10 +31,10 @@ final case class Footer() extends Component {
 
   private def extLink(name: String, url: String) =
     li(
-      cls("nav-item"),
+      cls := "nav-item",
       a(
-        cls("nav-link px-2 text-muted"),
-        target("_blank"),
+        cls    := "nav-link px-2 text-muted",
+        target := "_blank",
         name,
         href(url)
       )
@@ -58,5 +58,4 @@ final case class Footer() extends Component {
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
     </ul>
   </footer>
-*/
-
+ */

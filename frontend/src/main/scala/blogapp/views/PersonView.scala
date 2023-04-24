@@ -143,7 +143,7 @@ final case class PersonView(id: Uuid) extends Component {
           children <-- $scrawls.map { scrawls =>
             scrawls.map(ScrawlDetailView(_, () => reloadScrawlBus.emit(())))
           }
-        ),
+        )
       )
     )
   )

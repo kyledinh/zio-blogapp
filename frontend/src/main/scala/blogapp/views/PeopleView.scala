@@ -20,13 +20,13 @@ case class EditablePeopleView(person: Person, reload: () => Unit) extends Compon
   val body: Div =
     div(
       a(
-        cls("list-group-item list-group-item-action d-flex gap-3 py-3 "),
+        cls := "list-group-item list-group-item-action d-flex gap-3 py-3",
         onClick --> { _ =>
           Router.router.pushState(Page.PersonPage(person.id))
         },
-        img(cls("rounded-circle flex-shrink-0"), src("https://github.com/twbs.png"), widthAttr(32), heightAttr(32)),
+        img(cls := "rounded-circle flex-shrink-0", src := "https://github.com/twbs.png", widthAttr(32), heightAttr(32)),
         div(
-          cls("d-flex gap-2 w-100 justify-content-between"),
+          cls := "d-flex gap-2 w-100 justify-content-between",
           h5(s"${person.fullName}"),
           h6(s"${person.id}"),
           p(s"${person.email}")
@@ -69,14 +69,14 @@ final case class PeopleView() extends Component {
 
   val body: Div =
     div(
-      cls("section bg-light"),
+      cls := "section bg-light",
       div(
-        cls("container"),
+        cls := "container",
         reloadPeopleBus.events --> { _ => () },
         onMountCallback(_ => reloadPeopleBus.emit(())),
         h2("People : "),
         div(
-          cls("list-group"),
+          cls := "list-group",
           children <-- $persons.map { scrawls =>
             scrawls.map(EditablePeopleView(_, () => reloadPeopleBus.emit(())))
           }
@@ -92,9 +92,9 @@ final case class PeopleView() extends Component {
 
   private def bodyLink(name: String, url: String) =
     a(
-      cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"),
-      target("_blank"),
+      cls    := "text-orange-700 hover:text-orange-600 text-l cursor-pointer",
+      target := "_blank",
       name,
-      href(url)
+      href := url
     )
 }

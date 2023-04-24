@@ -22,10 +22,10 @@ final case class EditableScrawlView(scrawl: Scrawl, reload: () => Unit) extends 
 
   val body: Div =
     div(
-      cls("card mb-3"),
+      cls := "card mb-3",
       h5(s"${scrawl.title}"),
-      img(src("simplex/images/scrawl-image-" + rand.between(1, 4) + ".jpg")),
-      div(cls("card-body"), div(cls("service-inner"), p(s"${scrawl.body}")))
+      img(src := "simplex/images/scrawl-image-" + rand.between(1, 4) + ".jpg"),
+      div(cls := "card-body", div(cls := "service-inner", p(s"${scrawl.body}")))
     )
 
   def asNode(value: com.raquo.laminar.api.L.Div): com.raquo.laminar.nodes.ChildNode.Base               = body
@@ -67,29 +67,29 @@ final case class BoardView() extends Component {
     reloadScrawlBus.events --> { _ => () },
     onMountCallback(_ => reloadScrawlBus.emit(())),
     div(
-      cls("bs-docs-section clearfix"),
-      div(cls("container"), h2("Scrawl Board II"), div(Components.formatDate(LocalDate.now())), br()),
+      cls := "bs-docs-section clearfix",
+      div(cls := "container", h2("Scrawl Board II"), div(Components.formatDate(LocalDate.now())), br()),
       div(
-        cls("container"),
+        cls := "container",
         div(
-          cls("row row-cols-md-2 row-cols-lg-3"),
+          cls := "row row-cols-md-2 row-cols-lg-3",
           children <-- $scrawls.map { scrawls =>
             scrawls.map(EditableScrawlView(_, () => reloadScrawlBus.emit(())))
           }
         )
       ),
       div(
-        cls("section bg-light"),
+        cls := "section bg-light",
         div(
-          cls("container"),
-          "Scrawl Board showing all recent Scrawls!",
+          cls := "container",
+          "Scrawl Board showing all recent Scrawls!"
         )
       )
     )
   )
 
   private def bodyLink(name: String, url: String) =
-    a(cls("text-orange-700 hover:text-orange-600 text-l cursor-pointer"), target("_blank"), name, href(url))
+    a(cls := "text-orange-700 hover:text-orange-600 text-l cursor-pointer", target := "_blank", name, href(url))
 }
 
 /*

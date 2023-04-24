@@ -1,5 +1,12 @@
 # Laminar
 
+## Tags and Elements
+
+- [Scala DOM Types](https://github.com/raquo/scala-dom-types)
+- [defined tags](https://github.com/raquo/scala-dom-types/tree/master/shared/src/main/scala/com/raquo/domtypes/defs/tags)
+- `div()` is `ReactiveHtmlElement[dom.html.Div]`
+
+
 ## Resources
 - https://laminar.dev/
 - https://javadoc.io/doc/com.raquo/laminar_sjs1_3/latest/index.html
