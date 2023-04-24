@@ -30,16 +30,21 @@ yarn           | 1.22.10        |
 
 [Quick Dev Guide](../../README.md#quick-guide-to-localdev-with-docker) will have Make target(alias) to run
 
+- Check - `make check`
 - Setup - `make setup` will create necessary local files and directories
+- Check what containers are running in Docker - `docker ps`
+- Run Postgres database in Docker - `make postgres-up`
+- Check the database status - `make postgres-check`
+- Initial Migration for Postgres database - `make postgres-init-migrate` (only once to seed DB)
 - Compile backend - `make backend-compile`
 - Compile frontend - `make frontend-compile`
-- Run Postges database in Docker - `make postgres-up`
-- Initial Migration for Postgres database - `make postgres-init-migrate`
 - Run backend - `make backend-up`
 - Run frontend - `make frontend-up`
 
 ### Checking Health of Local Development
-- Run make commands to check - `make check`
+- Check if software dependencies are installed - `make check`
+- Check what SBT is running - `make status`
+- Check what containers are running in Docker - `docker ps`
 
 <br><hr><br>
 
