@@ -19,6 +19,6 @@ echo "<!-- Build: $BUILD_VERSION -->" >> ignored/index.html
 docker build -t $APP_IMG_NAME:$BUILD_VERSION -f $DOCKERFILE .
 docker tag $APP_IMG_NAME:$BUILD_VERSION $APP_IMG_NAME:latest
 
-docker images | grep $APP_IMG_NAME
+# docker images | grep $APP_IMG_NAME
 
 ## UPLOAD TO DOCKER HUB
