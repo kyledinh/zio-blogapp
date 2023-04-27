@@ -5,16 +5,16 @@ This project is used to explore the development experience of using Scala 3 for 
 - Original repo: https://github.com/zio/zio-petclinic (Scala 2)
 - Original video: https://www.youtube.com/watch?v=3lopiYfWmdQ (Awesome!)
 - Then updated to Scala 3: https://github.com/kyledinh/zio-petclinic-scala-3 (blogapp branch) then used as template to create this Blog App
-
+- Here's the Onboarding Video, but at 5 minutes in, it shows what the app does: https://youtu.be/GnQqMgYiG3E?t=287 
 ### Changes from the original repo with:
 
-- [x] Update from Scala 2 to Scala 3.1.3
+- [x] Update from Scala 2 to Scala 3.2.2
 - [x] Docker for Postgres Database
 - [x] Backend API for Blog App
 - [x] Frontend with Scala.js/Laminar (Apply a different predesigned theme)
 - [x] Use a standard Bootstrap 5 theme
 - [ ] Update Tests
-- [ ] Developer Tools/Guides 
+- [x] Developer Tools/Guides 
 - [x] Deploy with Kubernetes 
 - [ ] Build pipeline
 - [ ] Metrics
@@ -27,6 +27,7 @@ This project is used to explore the development experience of using Scala 3 for 
 - [Quick Guide to localdev](#quick-guide-to-localdev-with-docker)
 - [Developer Guide](docs/guides/dev-guide.md)
     - [Onboarding Guide](docs/guides/onboarding-guide.md) | [Onboarding Video](https://youtu.be/GnQqMgYiG3E)
+    - [Build Kubernetes Guide](docs/guides/build-kubernetes-guide.md) | [Build Kubernetes Video]()
     - [Backend Guide](docs/guides/backend-guide.md)
     - [Frontend Guide](docs/guides/frontend-guide.md)
     - [Troubleshooting Guide](docs/guides/troubleshooting-guide.md)
