@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: blogapp-nginx 
-          image: kyledinh/blogapp-nginx:0.0.8-c750607-dirty
+          image: kyledinh/blogapp-nginx:0.1.1-6be4a2e 
           imagePullPolicy: Always ## IfNotPresent
           # resources:
           #   limits:

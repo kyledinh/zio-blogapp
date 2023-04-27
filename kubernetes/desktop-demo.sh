@@ -55,16 +55,24 @@ function fn_debugcerts {
 	echo; echo "Try: kubectl describe certificate <certificate name> -n <certificate namespace>"
 }
 
+function fn_describe {
+	POD=$(kubectl get pods -n web | grep $1 | awk '{print $1}')
+    echo "kubectl describe pod $POD -n $NAMESPACE"
+    kubectl describe pod $POD -n $NAMESPACE 
+}
+
 function fn_down {
-	kubectl delete deployment blogapp-api -n $NAMESPACE
-	kubectl delete deployment blogapp-database -n $NAMESPACE
-	kubectl delete deployment blogapp-web -n $NAMESPACE
-	# kubectl delete cm cm-webtest-index-html -n $NAMESPACE
+	kubectl delete deployment app-blogapp-api -n $NAMESPACE
+	kubectl delete deployment app-blogapp-database -n $NAMESPACE
+	kubectl delete deployment app-blogapp-web -n $NAMESPACE
+	kubectl delete svc svc-blogapp-api -n $NAMESPACE
+	kubectl delete svc svc-blogapp-database -n $NAMESPACE
+	kubectl delete svc svc-blogapp-web -n $NAMESPACE
 }
 
 function fn_ex {
-	POD=$(kubectl get pods -n web | grep $1 | awk '{print $1}')
-    echo "kubectl exec -it -n web $POD -- bash"
+	POD=$(kubectl get pods -n $NAMESPACE | grep $1 | awk '{print $1}')
+    echo "kubectl exec -it -n $NAMESPACE $POD -- bash"
     kubectl exec -it -n $NAMESPACE $POD -- bash
 }
 
@@ -134,6 +142,8 @@ case "$COMMAND" in
 		fn_chrome;;
 	debugcerts)
 		fn_debugcerts;;
+  describe)
+		fn_describe ${@:2};;
 	down)
 		fn_down;;
 	ex)

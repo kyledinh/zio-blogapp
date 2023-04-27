@@ -48,8 +48,8 @@ codegen-clear:
 
 ## docker:publishLocal is still a blackbox, but will produce a working Docker image
 docker-build:
-	$(MAKE) frontend-compile 
 	sbt docker:publishLocal 
+	$(MAKE) frontend-compile 
 	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
 	cd docker/ && ./build-blogapp-nginx-frontend.sh	
 	docker images | grep blogapp 
