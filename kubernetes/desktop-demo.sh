@@ -71,8 +71,8 @@ function fn_down {
 }
 
 function fn_ex {
-	POD=$(kubectl get pods -n web | grep $1 | awk '{print $1}')
-    echo "kubectl exec -it -n web $POD -- bash"
+	POD=$(kubectl get pods -n $NAMESPACE | grep $1 | awk '{print $1}')
+    echo "kubectl exec -it -n $NAMESPACE $POD -- bash"
     kubectl exec -it -n $NAMESPACE $POD -- bash
 }
 

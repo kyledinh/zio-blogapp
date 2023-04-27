@@ -27,7 +27,7 @@ This project is used to explore the development experience of using Scala 3 for 
 - [Quick Guide to localdev](#quick-guide-to-localdev-with-docker)
 - [Developer Guide](docs/guides/dev-guide.md)
     - [Onboarding Guide](docs/guides/onboarding-guide.md) | [Onboarding Video](https://youtu.be/GnQqMgYiG3E)
-    - [Build Kubernetes Guide](docs/guides/build-kubernetes-guide.md) | [Build Kubernetes Video]()
+    - [Build Kubernetes Guide](docs/guides/build-kubernetes-guide.md) | [Build Kubernetes Video](https://youtu.be/9PXKby6QMjw)
     - [Backend Guide](docs/guides/backend-guide.md)
     - [Frontend Guide](docs/guides/frontend-guide.md)
     - [Troubleshooting Guide](docs/guides/troubleshooting-guide.md)

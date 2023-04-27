@@ -44,7 +44,6 @@ If you are using Docker Desktop, you need to enable Kubernetes under `Preference
   - `./desktop-demo.sh up` 
   - See [file](../../kubernetes/desktop-demo.sh), there are many other helpful options available, or view the [Kubernetes Tool Script](#kubernetes-tool-script) for more 
 
-
 <br><hr><br>
 
 ## Kubernetes Tool Script 
@@ -92,8 +91,7 @@ Command                            | Details
 `desktop-demo.sh ex <SEARCHTERM>`  | Open a bash session into the pod that matches the SEARCHTERM
 
 
-Note: This is a very simple/striped down deployment for localdev, for deployment to multiple environments like Testing, Staging adn Production, you look into Helm. A topic to cover at a later time.
-
+Note: This is a very simple/striped down deployment for localdev; for deployment to multiple environments like Testing, Staging and Production, you should look into Helm charts. A topic to cover at a later time.
 
 <br><hr><br>
 
