@@ -1,3 +1,6 @@
+0.1.2
+- Configuration via file and ENV variables
+
 0.1.1
 - Added various guides/docs in docs/guides/ 
 

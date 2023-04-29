@@ -72,13 +72,13 @@ fmt:
 
 frontend-compile:
 	@sbtn frontend/fastLinkJS
-	@cp frontend/target/scala-3.2.2/blogapp-frontend-fastopt/main.js js-frontend/.
-	@echo "let BLOGAPP_SEMVER = '$(SEMVER)-$(GITTAG)';" > js-frontend/blogapp.js
-	@echo "$(SEMVER)-$(GITTAG)" > js-frontend/sem-version 
+	@cp frontend/target/scala-3.2.2/blogapp-frontend-fastopt/main.js html/.
+	@echo "let BLOGAPP_SEMVER = '$(SEMVER)-$(GITTAG)';" > html/blogapp.js
+	@echo "$(SEMVER)-$(GITTAG)" > html/sem-version 
 
 frontend-up:
 	@open http://localhost:3000
-	@cd js-frontend && yarn exec vite
+	@cd html && yarn exec vite
 
 postgres-check:
 	@docker exec -i docker_pg_container psql  -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "\l"
@@ -117,7 +117,7 @@ setup:
 	@echo "SETTING UP DOCKER FILES/DIR"
 	$(shell [ -d $(DOCKER_PG_VOL) ] || mkdir $(DOCKER_PG_VOL))
 	@echo "yarn install for frontend"
-	@cd js-frontend && yarn install
+	@cd html && yarn install
 
 status:
 	@echo "Docker/Database Status:"

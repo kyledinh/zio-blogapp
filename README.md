@@ -161,7 +161,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │   └── target
 │       └── scala-3.1.3        main.js will be generated here
 │
-├── js-frontend                Javasript webserver using vite/Node
+├── html                      Javasript webserver using vite/Node
 │   ├── index.html
 │   ├── main.js
 │   ├── main.scss
@@ -193,7 +193,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: js-frontend/zio-pet-clinic-webpage.png
+[product-screenshot]: html/zio-pet-clinic-webpage.png
 [board-page-screenshot]: docs/assets/simplex/blogapp-board-screenshot.png
 [people-page-screenshot]: docs/assets/simplex/blogapp-people-screenshot.png
 [person-page-screenshot]: docs/assets/simplex/blogapp-person-screenshot.png

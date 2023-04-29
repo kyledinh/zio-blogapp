@@ -1,6 +1,6 @@
 # Frontend Guide
 
-All scala code in `/frontend/` and `/shared/` are compiled down to `main.js` which is used in the `/js-frontend/` directory, the deployable version of the frontend.
+All scala code in `/frontend/` and `/shared/` are compiled down to `main.js` which is used in the `/html/` directory, the deployable version of the frontend.
 
 ### Commands for Building
 - `make frontend-compile`
