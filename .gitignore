@@ -7,6 +7,7 @@ node_modules
 dist
 
 
+docker/pg_vol/
 docker_pg_vol/
 docker/version
 output/

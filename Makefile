@@ -5,7 +5,7 @@ REPO_DIR ?= $(shell pwd | xargs echo -n)
 GITTAG ?= $(shell git describe --tags --always --dirty)
 SEMVER ?= $(shell head -n 1 sem-version)
 
-DOCKER_PG_VOL := docker_pg_vol
+DOCKER_PG_VOL := docker/pg_vol
 DOCKER_PG_CONTAINER := docker_pg_container
 DOCKER_HUB_REPO := kyledinh
 
@@ -47,11 +47,11 @@ codegen-clear:
 	rm -rf output/*.*
 
 ## docker:publishLocal is still a blackbox, but will produce a working Docker image
-docker-build:
-	sbt docker:publishLocal 
-	$(MAKE) frontend-compile 
-	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
+docker-build: frontend-compile
 	cd docker/ && ./build-blogapp-nginx-frontend.sh	
+
+	sbt docker:publishLocal 
+	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
 	docker images | grep blogapp 
 
 ## customize DOCKER_HUB_REPO to your repository

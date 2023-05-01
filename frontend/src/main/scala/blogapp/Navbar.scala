@@ -29,6 +29,7 @@ final case class Navbar() extends Component {
     button(
       cls := "navbar-toggler collapsed",
       typ := "button",
+      idAttr := "navButton",
       attrDataBsToggle("collapse"),
       attrDataBsTarget(targetId),
       attrAriaControls("navbarResponsive"),
