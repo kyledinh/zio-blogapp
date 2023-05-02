@@ -27,8 +27,8 @@ final case class Navbar() extends Component {
 
   private def navbarTogglerButton(targetId: String): Button =
     button(
-      cls := "navbar-toggler collapsed",
-      typ := "button",
+      cls    := "navbar-toggler collapsed",
+      typ    := "button",
       idAttr := "navButton",
       attrDataBsToggle("collapse"),
       attrDataBsTarget(targetId),

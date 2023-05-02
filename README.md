@@ -84,11 +84,11 @@ Check processes that are running
 
 > Port number for services  
 
-| Service  | Default Port | Environment Var      | Usage                                    |
-|----------|--------------|----------------------|------------------------------------------|
-| frontend | :3000        |                      | http://localhost:3000/                   |
-| backend  | :4000        | BLOGAPP_BACKEND_PORT | http://localhost:4000/scrawls            |
-| postgres | :5432        |                      | jdbc:postgresql://localhost:5432/blogapp |
+| Service  | Default Port | Environment Var      | Usage                                              |
+|----------|--------------|----------------------|----------------------------------------------------|
+| frontend | :3000        |                      | http://localhost:3000/                             |
+| backend  | :4000        | BLOGAPPBACKEND_PORT  | http://localhost:4000/scrawls                      |
+| postgres | :5432        | DATABASE_URL         | postgres://$username:$password@$host:$port/$dbname |
 
 <br><hr><br>
 

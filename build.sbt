@@ -12,7 +12,7 @@ val flywayVersion               = "9.4.0"      // "8.5.12"
 val laminarVersion              = "15.0.1"     // "0.14.2"
 val postgresVersion             = "42.3.6"
 val slf4jVersion                = "1.7.36"
-val zioConfigVersion            = "4.0.0-RC14" 
+val zioConfigVersion            = "4.0.0-RC14"
 val zioHttpVersion              = "2.0.0-RC11" // "2.0.0-RC9"
 val zioJsonVersion              = "0.3.0"      // "0.3.0-RC8"
 val zioLoggingVersion           = "2.1.1"      // "2.0.0-RC10"
@@ -47,6 +47,8 @@ lazy val backend = (project in file("backend"))
     libraryDependencies ++= Seq(
       "dev.zio"               %% "zio"                               % zioVersion,
       "dev.zio"               %% "zio-config"                        % zioConfigVersion,
+      "dev.zio"               %% "zio-config-typesafe"               % "4.0.0-RC14",
+      "dev.zio"               %% "zio-config-magnolia"               % "4.0.0-RC14",
       "dev.zio"               %% "zio-logging-slf4j"                 % zioLoggingVersion,
       "dev.zio"               %% "zio-macros"                        % zioVersion,
       "dev.zio"               %% "zio-metrics-connectors"            % zioMetricsConnectorsVersion,
