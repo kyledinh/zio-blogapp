@@ -10,6 +10,8 @@ dist
 docker/pg_vol/
 docker_pg_vol/
 docker/version
+kubernetes/desktop/deployment-blogapp-*.yaml
+
 output/
 ignored/
 ign-*

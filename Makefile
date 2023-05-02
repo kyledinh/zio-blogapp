@@ -116,6 +116,9 @@ postgres-up:
 setup:
 	@echo "SETTING UP DOCKER FILES/DIR"
 	$(shell [ -d $(DOCKER_PG_VOL) ] || mkdir $(DOCKER_PG_VOL))
+	@cp kubernetes/desktop/.sample-deployment-blogapp-api.yaml kubernetes/desktop/deployment-blogapp-api.yaml
+	@cp kubernetes/desktop/.sample-deployment-blogapp-database.yaml kubernetes/desktop/deployment-blogapp-database.yaml
+	@cp kubernetes/desktop/.sample-deployment-blogapp-web.yaml kubernetes/desktop/deployment-blogapp-web.yaml
 	@echo "yarn install for frontend"
 	@cd html && yarn install
 

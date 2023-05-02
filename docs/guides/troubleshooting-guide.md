@@ -20,4 +20,11 @@
 - DNS/URL errors between Backend, Frontend and Postgres 
 - Dependencies' version incompatibilty - (look in /build.sbt)
 
+<br><hr><br>
+
 ## Historical Problems
+
+#### SBT and ENV variables
+- The SBT server needs the ENV variables found in `.sample-env-localhdev.sh`, so would run `source .{your-version}-env-localdev.sh` 
+then run `sbt` then `exit`. This will keep the sbt server running with the right ENVs. Then use `sbtn` client to compile and run the code. 
+- Use `printenv | grep BLOGAPP` to check if the ENV variable are set correctly for the terminal.
