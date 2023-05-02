@@ -1,7 +1,7 @@
 0.2.0
-- Replace Zio Config with typesafe config
 - Configuration via file and ENV variables
-- consolidated config files tp .... and ...
+- .sample-env-localdev.sh contains ENV variables 
+- api endpoint /info for config settings 
 - ranamed js-frontent/ to html/
 
 0.1.1
