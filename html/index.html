@@ -1,0 +1,56 @@
+<!-- /*
+* Template Name: Simplex 
+* Template Author: Thomas Park - https://thomaspark.co/
+* Template URI: https://bootswatch.com/simplex/
+* License: MIT - https://github.com/thomaspark/bootswatch/blob/master/LICENSE
+* https://github.com/thomaspark/bootswatch/blob/master/docs/simplex/index.html
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap5" />
+
+	<link rel="stylesheet" href="/simplex/simplex.bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+
+  <script src="/simplex/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="/simplex/js/event-handler.js"></script>
+  <script src="/simplex/js/bootstrap.bundle.min.js"></script>
+  <script src="/blogapp.js"></script>
+
+	<title>Blog App with ZIO and Scala3 and ScalaJS</title>
+</head>
+<body>
+
+<div id="app"></div>
+<script type="module" src="../main.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("blogappSemver").innerHTML = "(" + BLOGAPP_SEMVER + ")" + " © 2023, Kyle Dinh Industries";
+	}
+</script>
+
+<!-- Navbar toggle fix/hack will show dropdown menu for 5 seconds !!! -->
+<script>
+	document.addEventListener('readystatechange', event => { 
+		const navButton = document.getElementById("navButton");
+		const navBarElem = document.getElementById("navbarResponsive");
+		const toggleNavbarEvent = (e) => {
+			setTimeout(function(){
+				navBarElem.classList.toggle("show");
+			}, 5000);
+		}
+		navButton.addEventListener("click", toggleNavbarEvent);
+	});
+</script>
+
+</body>
+</html>

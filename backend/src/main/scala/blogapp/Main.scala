@@ -20,9 +20,11 @@ object Main extends ZIOAppDefault {
       .serviceWithZIO[BlogServer](_.start)
       .provide(
         BlogServer.layer,
+        AdminRoutes.layer,
         ScrawlRoutes.layer,
         PersonRoutes.layer,
         QuillContext.dataSourceLayer,
+        AdminServiceLive.layer,
         PersonServiceLive.layer,
         ScrawlServiceLive.layer,
         // Migrations.layer,

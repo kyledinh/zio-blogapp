@@ -7,8 +7,12 @@ node_modules
 dist
 
 
+docker/pg_vol/
 docker_pg_vol/
 docker/version
+kubernetes/desktop/deployment-blogapp-*.yaml
+.env-localdev.sh
+
 output/
 ignored/
 ign-*
@@ -18,6 +22,6 @@ ign-*
 metals.sbt
 version
 
-js-frontend/sem-version
-js-frontend/blogapp.js
-js-frontend/main.js
+html/sem-version
+html/blogapp.js
+html/main.js

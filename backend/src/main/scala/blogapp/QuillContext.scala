@@ -17,21 +17,21 @@ object QuillContext extends PostgresZioJdbcContext(SnakeCase) {
   val dataSourceLayer: ZLayer[Any, Nothing, DataSource] =
     ZLayer {
       for {
-        postgresURL <- System.env("DATABASE_URL").orDie
-        localDBConfig = Map(
-                          "dataSource.user"     -> "postgres",
-                          "dataSource.password" -> "password",
-                          "dataSource.url"      -> "jdbc:postgresql://localhost:5432/blogapp"
-                        )
+        postgresURL <- System.env("DATABASE_URL").orDie // "postgres://$username:$password@$host:$port/$dbname"
+        defaultLocalConfig = Map(
+                               "dataSource.user"     -> "postgres",
+                               "dataSource.password" -> "password",
+                               "dataSource.url"      -> "jdbc:postgresql://localhost:5432/blogapp"
+                             )
         configMap = postgresURL
                       .map(parsePostgresDatabaseUrl(_).toMap)
-                      .getOrElse(localDBConfig)
+                      .getOrElse(defaultLocalConfig)
         config = ConfigFactory.parseMap(
                    configMap.updated("dataSourceClassName", "org.postgresql.ds.PGSimpleDataSource").asJava
                  )
         // FOR DEBUGGING: TODO REMOVE LATER
-        _ <- ZIO.logInfo("DATABASE_URL > postgresURL: " + postgresURL.toString())
-        _ <- ZIO.logInfo("config: " + config.toString())
+        _ <- ZIO.logDebug("DATABASE_URL > postgresURL: " + postgresURL.toString())
+        _ <- ZIO.logDebug("config: " + config.toString())
       } yield Quill.DataSource.fromConfig(config).orDie
     }.flatten
 

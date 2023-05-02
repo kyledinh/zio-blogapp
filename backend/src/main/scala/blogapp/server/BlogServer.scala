@@ -5,15 +5,19 @@ import zhttp.http.*
 import zhttp.http.middleware.HttpMiddleware
 import zhttp.service.Server
 import zio.*
+import blogapp.AppConfig
+
+case class BackendConfig(port: Int)
 
 final case class BlogServer(
     personRoutes: PersonRoutes,
-    scrawlRoutes: ScrawlRoutes
+    scrawlRoutes: ScrawlRoutes,
+    adminRoutes: AdminRoutes
     // migrations: Migrations
 ) {
 
   val allRoutes: HttpApp[Any, Throwable] = {
-    personRoutes.routes ++ scrawlRoutes.routes
+    personRoutes.routes ++ scrawlRoutes.routes ++ adminRoutes.routes
   }
 
   /** Logs the requests made to the server. It also adds a request ID to the
@@ -38,10 +42,20 @@ final case class BlogServer(
         }
     }
 
+  val backendConfig =
+    ZLayer.fromZIO(
+      ZIO.config[AppConfig](AppConfig.config).map { c =>
+        BackendConfig(
+          port = c.port
+        )
+      }
+    )
+
   def start: ZIO[Any, Throwable, Unit] =
     for {
       // _    <- migrations.reset.repeat(Schedule.fixed(15.minutes)).fork
       port <- System.envOrElse("BLOGAPP_BACKEND_PORT", "4000").map(_.toInt)
+      _    <- ZIO.logDebug("Backend running on port: " + port.toString())
       _    <- Server.start(port, allRoutes @@ Middleware.cors() @@ loggingMiddleware)
     } yield ()
 
@@ -50,7 +64,7 @@ final case class BlogServer(
 object BlogServer {
 
   // val layer: ZLayer[PersonRoutes with ScrawlRoutes with Migrations, Nothing, BlogServer] =
-  val layer: ZLayer[PersonRoutes with ScrawlRoutes, Nothing, BlogServer] =
+  val layer: ZLayer[PersonRoutes with ScrawlRoutes with AdminRoutes, Nothing, BlogServer] =
     ZLayer.fromFunction(BlogServer.apply _)
 
 }

@@ -5,7 +5,7 @@ REPO_DIR ?= $(shell pwd | xargs echo -n)
 GITTAG ?= $(shell git describe --tags --always --dirty)
 SEMVER ?= $(shell head -n 1 sem-version)
 
-DOCKER_PG_VOL := docker_pg_vol
+DOCKER_PG_VOL := docker/pg_vol
 DOCKER_PG_CONTAINER := docker_pg_container
 DOCKER_HUB_REPO := kyledinh
 
@@ -47,11 +47,11 @@ codegen-clear:
 	rm -rf output/*.*
 
 ## docker:publishLocal is still a blackbox, but will produce a working Docker image
-docker-build:
-	sbt docker:publishLocal 
-	$(MAKE) frontend-compile 
-	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
+docker-build: frontend-compile
 	cd docker/ && ./build-blogapp-nginx-frontend.sh	
+
+	sbt docker:publishLocal 
+	docker tag blogapp-backend:$(SEMVER) $(DOCKER_HUB_REPO)/blogapp-backend:$(SEMVER)-$(GITTAG)
 	docker images | grep blogapp 
 
 ## customize DOCKER_HUB_REPO to your repository
@@ -72,13 +72,13 @@ fmt:
 
 frontend-compile:
 	@sbtn frontend/fastLinkJS
-	@cp frontend/target/scala-3.2.2/blogapp-frontend-fastopt/main.js js-frontend/.
-	@echo "let BLOGAPP_SEMVER = '$(SEMVER)-$(GITTAG)';" > js-frontend/blogapp.js
-	@echo "$(SEMVER)-$(GITTAG)" > js-frontend/sem-version 
+	@cp frontend/target/scala-3.2.2/blogapp-frontend-fastopt/main.js html/.
+	@echo "let BLOGAPP_SEMVER = '$(SEMVER)-$(GITTAG)';" > html/blogapp.js
+	@echo "$(SEMVER)-$(GITTAG)" > html/sem-version 
 
 frontend-up:
 	@open http://localhost:3000
-	@cd js-frontend && yarn exec vite
+	@cd html && yarn exec vite
 
 postgres-check:
 	@docker exec -i docker_pg_container psql  -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "\l"
@@ -116,8 +116,12 @@ postgres-up:
 setup:
 	@echo "SETTING UP DOCKER FILES/DIR"
 	$(shell [ -d $(DOCKER_PG_VOL) ] || mkdir $(DOCKER_PG_VOL))
+	@cp .sample-env-localdev.sh env-localdev.sh
+	@cp kubernetes/desktop/.sample-deployment-blogapp-api.yaml kubernetes/desktop/deployment-blogapp-api.yaml
+	@cp kubernetes/desktop/.sample-deployment-blogapp-database.yaml kubernetes/desktop/deployment-blogapp-database.yaml
+	@cp kubernetes/desktop/.sample-deployment-blogapp-web.yaml kubernetes/desktop/deployment-blogapp-web.yaml
 	@echo "yarn install for frontend"
-	@cd js-frontend && yarn install
+	@cd html && yarn install
 
 status:
 	@echo "Docker/Database Status:"

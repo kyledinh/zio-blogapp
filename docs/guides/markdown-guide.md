@@ -14,7 +14,7 @@
 ```
 - Alias for linking
 ```
-[alias-name]: js-frontend/zio-pet-clinic-webpage.png
+[alias-name]: html/zio-pet-clinic-webpage.png
 ```
 - Comments
 ```

@@ -1,5 +1,11 @@
+0.2.0
+- Configuration via file and ENV variables
+- .sample-env-localdev.sh contains ENV variables 
+- api endpoint /info for config settings 
+- ranamed js-frontent/ to html/
+
 0.1.1
-- Added various guides/docs in docs/guides/ 
+- Added various documentation for onboarding and build/deploy to Kubernetes in docs/guides/ 
 
 0.1.0
 - updated to use a standard Bootstrap 5 theme, so the code example are more universal

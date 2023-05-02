@@ -12,7 +12,7 @@ BUILD_VERSION=$(cat version)
 echo "BUILDING $REPO_BASE/$APP_IMG_NAME-$BUILD_VERSION" 
 
 ## BUILD SCALA.JS
-cp -R ../js-frontend ignored/.
+cp -R ../html ignored/.
 echo "<!-- Build: $BUILD_VERSION -->" >> ignored/index.html
 
 ## BUILD 

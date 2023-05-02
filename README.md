@@ -84,11 +84,11 @@ Check processes that are running
 
 > Port number for services  
 
-| Service  | Default Port | Environment Var      | Usage                                    |
-|----------|--------------|----------------------|------------------------------------------|
-| frontend | :3000        |                      | http://localhost:3000/                   |
-| backend  | :4000        | BLOGAPP_BACKEND_PORT | http://localhost:4000/scrawls            |
-| postgres | :5432        |                      | jdbc:postgresql://localhost:5432/blogapp |
+| Service  | Default Port | Environment Var      | Usage                                              |
+|----------|--------------|----------------------|----------------------------------------------------|
+| frontend | :3000        |                      | http://localhost:3000/                             |
+| backend  | :4000        | BLOGAPPBACKEND_PORT  | http://localhost:4000/scrawls                      |
+| postgres | :5432        | DATABASE_URL         | postgres://$username:$password@$host:$port/$dbname |
 
 <br><hr><br>
 
@@ -161,7 +161,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 │   └── target
 │       └── scala-3.1.3        main.js will be generated here
 │
-├── js-frontend                Javasript webserver using vite/Node
+├── html                      Javasript webserver using vite/Node
 │   ├── index.html
 │   ├── main.js
 │   ├── main.scss
@@ -193,7 +193,7 @@ A good starting point to understand this repo is with the `Makefile`. It will ha
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: js-frontend/zio-pet-clinic-webpage.png
+[product-screenshot]: html/zio-pet-clinic-webpage.png
 [board-page-screenshot]: docs/assets/simplex/blogapp-board-screenshot.png
 [people-page-screenshot]: docs/assets/simplex/blogapp-people-screenshot.png
 [person-page-screenshot]: docs/assets/simplex/blogapp-person-screenshot.png
