@@ -17,6 +17,7 @@ final case class AdminServiceLive(dataSource: DataSource) extends AdminService {
       AppInfo(
         host = c.host,
         backendPort = c.port,
+        runMode = c.runMode,
         logLevel = c.logLevel
       )
     }

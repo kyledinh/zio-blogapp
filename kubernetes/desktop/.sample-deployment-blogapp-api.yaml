@@ -29,11 +29,17 @@ spec:
     spec:
       containers:
         - name: blogapp-api
-          image: kyledinh/blogapp-backend:0.0.7
+          image: kyledinh/blogapp-backend:0.2.0-31443b4
           imagePullPolicy: Always ## IfNotPresent
           env:
-          - name: BLOGAPP_BACKEND_PORT
+          - name: BLOGAPPBACKEND_PORT
             value: "4000"
+          - name: BLOGAPPBACKEND_HOST
+            value: "localhost"
+          - name: BLOGAPPBACKEND_LOGLEVEL
+            value: "Info"
+          - name: BLOGAPPBACKEND_RUNMODE
+            value: "Demo"
           - name: DATABASE_URL 
             value: "postgres://postgres:password@svc-blogapp-database:5432/blogapp"
             # postgres://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@host.docker.internal:5432/$(POSTGRES_DB)

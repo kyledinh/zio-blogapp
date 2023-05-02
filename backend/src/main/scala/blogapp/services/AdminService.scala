@@ -7,6 +7,7 @@ import zio.*
 case class AppInfo(
     host: String,
     backendPort: Int,
+    runMode: String,
     logLevel: String
 )
 

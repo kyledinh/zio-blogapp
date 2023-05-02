@@ -11,6 +11,7 @@ docker/pg_vol/
 docker_pg_vol/
 docker/version
 kubernetes/desktop/deployment-blogapp-*.yaml
+.env-localdev.sh
 
 output/
 ignored/
